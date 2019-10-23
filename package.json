@@ -1,7 +1,8 @@
 {
-  "name": "porto",
+  "name": "josteph-porto",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://josteph.github.io",
   "dependencies": {
     "@babel/core": "7.6.0",
     "@loadable/component": "^5.10.3",
@@ -56,6 +57,8 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -b master -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
@@ -84,6 +87,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "gh-pages": "^2.1.1",
     "husky": "^3.0.8",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
