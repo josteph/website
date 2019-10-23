@@ -1,9 +1,8 @@
-import loadPolyfills from './polyfills';
 import { registerServiceWorker } from '@worker';
 
 try {
   (async () => {
-    await loadPolyfills();
+    require('./polyfills');
 
     /**
      * Using webpackMode: "eager" will cause this dynamic import to be part of the main bundle,
