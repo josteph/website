@@ -1,12 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import loadPolyfills from './polyfills';
+import { registerServiceWorker } from '@worker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+try {
+  (async () => {
+    await loadPolyfills();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    /**
+     * Using webpackMode: "eager" will cause this dynamic import to be part of the main bundle,
+     * not creating its own chunk
+     */
+    await import(/* webpackMode: "eager" */ './bootstrap.js');
+  })();
+} catch (error) {
+  console.log('[Bootstrap] Error:', error.toString());
+  console.log(error.stack);
+} finally {
+  try {
+    console.log('Registering service worker');
+    registerServiceWorker();
+  } catch (error) {
+    console.log('[Service Worker] Error:', error.toString());
+    console.log(error.stack);
+  }
+}

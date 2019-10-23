@@ -1,21 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { object } from 'prop-types';
+import { BrowserRouter as Router } from 'react-router-dom';
+import ErrorBoundary from '@components/ErrorBoundary';
+import ErrorView from '@components/ErrorView';
 
-function App() {
+import Routes from '@route-gateway';
+
+function App({ history }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary render={() => <ErrorView />}>
+      <Router>
+        <Routes />
+      </Router>
+    </ErrorBoundary>
   );
 }
+
+App.propTypes = {
+  history: object.isRequired,
+};
 
 export default App;
