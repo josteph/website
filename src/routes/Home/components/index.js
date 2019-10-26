@@ -20,8 +20,10 @@ const Home = props => {
   }, [vantaEffect]);
 
   return (
-    <div id="home" className="home-container" ref={myRef}>
-      <p>Foreground content goes here</p>
+    <div className="home-container" ref={myRef}>
+      <div className="foreground-container">
+        <p>Foreground content goes here</p>
+      </div>
     </div>
   );
 };
