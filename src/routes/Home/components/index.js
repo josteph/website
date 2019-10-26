@@ -1,20 +1,29 @@
-import React from 'react';
-import logo from '@assets/logo.svg';
+import React, { useEffect, useRef } from 'react';
 
-function Home() {
+const Home = props => {
+  const vantaEffect = useRef();
+  const myRef = useRef();
+
+  useEffect(() => {
+    if (!vantaEffect.current) {
+      vantaEffect.current = window.VANTA.NET({
+        el: myRef.current,
+        color: 0x0,
+        backgroundColor: 0xffffff,
+        points: 15.0,
+      });
+    }
+
+    return () => {
+      if (vantaEffect.current) vantaEffect.current.destroy();
+    };
+  }, [vantaEffect]);
+
   return (
-    <div className="App" data-testid="home-container">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div id="home" className="home-container" ref={myRef}>
+      <p>Foreground content goes here</p>
     </div>
   );
-}
+};
 
 export default Home;
