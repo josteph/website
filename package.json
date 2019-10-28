@@ -64,7 +64,8 @@
     "deploy": "gh-pages -b master -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "analyze": "node scripts/analyze.js"
   },
   "browserslist": {
     "production": [

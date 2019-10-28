@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const Home = props => {
+const Home = () => {
   const vantaEffect = useRef();
   const myRef = useRef();
 
