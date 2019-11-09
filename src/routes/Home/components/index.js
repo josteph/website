@@ -35,7 +35,7 @@ const Home = () => {
             setInitLoading(false);
             clearInterval(pollTimer.current);
           }
-        }, 500);
+        }, 250);
       }
     }
 
