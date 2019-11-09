@@ -8,8 +8,8 @@ const Home = () => {
     if (!vantaEffect.current) {
       vantaEffect.current = window.VANTA.NET({
         el: myRef.current,
-        color: 0x0,
-        backgroundColor: 0xffffff,
+        color: 0x33b377,
+        backgroundColor: 0x100c22,
         points: 15.0,
       });
     }
@@ -21,9 +21,7 @@ const Home = () => {
 
   return (
     <div className="home-container" ref={myRef}>
-      <div className="foreground-container">
-        <p>Foreground content goes here</p>
-      </div>
+      <div className="foreground-container"></div>
     </div>
   );
 };
