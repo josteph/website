@@ -1,27 +1,53 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Home = () => {
+  const [initLoading, setInitLoading] = useState(true);
   const vantaEffect = useRef();
-  const myRef = useRef();
+  const pollTimer = useRef();
+  const mainContainer = useRef();
 
   useEffect(() => {
-    if (!vantaEffect.current) {
-      vantaEffect.current = window.VANTA.NET({
-        el: myRef.current,
+    const initVanta = () => {
+      if (!window.THREE || !window.VANTA) {
+        return null;
+      }
+
+      return window.VANTA.NET({
+        el: mainContainer.current,
         color: 0x33b377,
         backgroundColor: 0x100c22,
         points: 15.0,
       });
+    };
+
+    if (!vantaEffect.current) {
+      const firstTryInit = initVanta();
+
+      if (firstTryInit) {
+        vantaEffect.current = firstTryInit;
+        setInitLoading(false);
+      } else {
+        pollTimer.current = setInterval(() => {
+          const initPollAgain = initVanta();
+
+          if (initPollAgain) {
+            vantaEffect.current = initPollAgain;
+            setInitLoading(false);
+            clearInterval(pollTimer.current);
+          }
+        }, 500);
+      }
     }
 
     return () => {
       if (vantaEffect.current) vantaEffect.current.destroy();
+      if (pollTimer.current) pollTimer.current.destroy();
     };
-  }, [vantaEffect]);
+  }, []);
 
   return (
-    <div className="home-container" ref={myRef}>
-      <div className="foreground-container"></div>
+    <div className="home-container" ref={mainContainer}>
+      {!initLoading && <div className="foreground-container"></div>}
     </div>
   );
 };
