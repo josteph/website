@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import appIcon from '@assets/top-logo.svg';
+import linkedInIcon from '@assets/linkedin.svg';
 
 const Home = () => {
   const [initLoading, setInitLoading] = useState(true);
@@ -45,9 +47,24 @@ const Home = () => {
     };
   }, []);
 
+  const renderContent = () => {
+    return (
+      <div className="foreground-container">
+        <div className="desktop-sidenav">
+          <img src={appIcon} alt="JS" />
+          <div className="social-icons">
+            <a href="https://www.linkedin.com/in/josteph22/" target="_blank" rel="noopener noreferrer">
+              <img src={linkedInIcon} alt="LinkedIn" />
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="home-container" ref={mainContainer}>
-      {!initLoading && <div className="foreground-container"></div>}
+      {!initLoading && renderContent()}
     </div>
   );
 };

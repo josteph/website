@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+  }
 }
 
 .home-container {
@@ -12,13 +20,30 @@ body {
 }
 
 .foreground-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  background-image: url('../assets/background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 4rem;
+  opacity: 0.85;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .desktop-sidenav {
+    width: 4rem;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .social-icons {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
 }
