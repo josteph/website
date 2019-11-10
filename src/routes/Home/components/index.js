@@ -51,7 +51,7 @@ const Home = () => {
     return (
       <div className="foreground-container">
         <div className="desktop-sidenav">
-          <img src={appIcon} alt="JS" />
+          <img src={appIcon} alt="JS" className="logo" />
           <div className="social-icons">
             <a href="https://www.linkedin.com/in/josteph22/" target="_blank" rel="noopener noreferrer">
               <img src={linkedInIcon} alt="LinkedIn" />

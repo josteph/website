@@ -24,10 +24,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: 4rem;
-  opacity: 0.85;
-  width: 100vw;
-  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   overflow: hidden;
+  position: absolute;
 
   .desktop-sidenav {
     width: 4rem;
@@ -37,13 +40,16 @@ body {
     flex-direction: column;
     justify-content: space-between;
 
+    .logo {
+      max-width: 60%;
+    }
+
     .social-icons {
       display: flex;
       margin-bottom: 2rem;
-    }
-
-    img {
-      max-width: 100%;
+      img {
+        max-width: 75%;
+      }
     }
   }
 }
