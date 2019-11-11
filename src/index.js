@@ -1,8 +1,11 @@
 import { registerServiceWorker } from '@worker';
+import LogRocket from 'logrocket';
 
 try {
   (async () => {
     require('./polyfills');
+
+    LogRocket.init('o2q1vh/my-portfolio-zaq7r');
 
     /**
      * Using webpackMode: "eager" will cause this dynamic import to be part of the main bundle,
