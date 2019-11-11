@@ -58,6 +58,33 @@ const Home = () => {
             </a>
           </div>
         </div>
+        <div className="main-content">
+          <h1>
+            JOSHUA
+            <br />
+            STEPHEN
+          </h1>
+          <h3>Front-End Developer</h3>
+          <p>
+            Hello, pleased to meet you! I am a developer, focusing on frontend.
+            <br />
+            Though I have handled several full stack projects as well.
+            <br />I mainly use <strong>React</strong> to code the frontend, though <strong>Vue</strong> is also an
+            option for me.
+            <br />I like to explore interesting stuffs, like <strong>GraphQL</strong>, configuring <strong>SSR</strong>{' '}
+            stacks, and other deep dive stuffs.
+            <hr />
+            <br />
+            Proudly saying, I&apos;m currently working in <strong>Tokopedia</strong>.
+            <br />
+            <br />
+            <strong>
+              Feel free to reach me anytime!
+              <br />
+              Would like to know more about you as well.
+            </strong>
+          </p>
+        </div>
       </div>
     );
   };

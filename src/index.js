@@ -6,9 +6,11 @@ try {
   (async () => {
     require('./polyfills');
 
-    LogRocket.init('o2q1vh/my-portfolio-zaq7r');
+    if (__PROD__) {
+      LogRocket.init('o2q1vh/my-portfolio-zaq7r');
 
-    setupLogRocketReact(LogRocket);
+      setupLogRocketReact(LogRocket);
+    }
 
     /**
      * Using webpackMode: "eager" will cause this dynamic import to be part of the main bundle,
