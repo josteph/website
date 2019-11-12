@@ -72,8 +72,8 @@ const Home = () => {
             <br />I mainly use <strong>React</strong> to code the frontend, though <strong>Vue</strong> is also an
             option for me.
             <br />I like to explore interesting stuffs, like <strong>GraphQL</strong>, configuring <strong>SSR</strong>{' '}
-            stacks, and other deep dive stuffs.
-            <hr />
+            stacks, and deep dive JS topics.
+            <br />
             <br />
             Proudly saying, I&apos;m currently working in <strong>Tokopedia</strong>.
             <br />
