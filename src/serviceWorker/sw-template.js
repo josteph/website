@@ -82,8 +82,8 @@ if ('function' === typeof importScripts) {
       'GET',
     );
 
-    // Event listener for workbox installed
     self.addEventListener('install', () => {
+      // Event listener for workbox installed
       console.log('SW installed!');
       console.log('Current version:', VERSION);
     });
@@ -99,7 +99,7 @@ if ('function' === typeof importScripts) {
         let deletedOldCache = false;
 
         keys.forEach(key => {
-          if (key.indexOf(VERSION) < 0 && key.indexOf('mcu') > -1) {
+          if (key.indexOf(VERSION) < 0) {
             console.log('deleted cache key:', key);
             caches.delete(key);
             deletedOldCache = true;
