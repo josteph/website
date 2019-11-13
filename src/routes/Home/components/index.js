@@ -64,7 +64,9 @@ const Home = () => {
             <br />
             STEPHEN
           </h1>
-          <h3>Front-End Developer</h3>
+          <h3>
+            <span>F</span>ront-<span>E</span>nd <span>D</span>eveloper
+          </h3>
           <p>
             Hello, pleased to meet you! I am a developer, focusing on frontend.
             <br />
