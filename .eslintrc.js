@@ -27,6 +27,12 @@ module.exports = {
     },
   },
   rules: {
+    'no-dupe-args': 'error',
+    'no-dupe-class-members': 'error',
+    'no-dupe-keys': 'error',
+    'no-duplicate-case': 'error',
+    'no-empty': 'error',
+    'no-empty-character-class': 'error',
     // Although this is handled by Prettier, unexpected multi-line can cause problem with automatic semicolon insertion (ASI), which may lead to bug, so this rule is still activated. Auto-format by Prettier should auto-fix most "unexpected multiline" cases.
     'no-unexpected-multiline': 'error',
 
