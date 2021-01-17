@@ -14,8 +14,8 @@
     "minify:svg": "node ./scripts/svg-minifier",
     "test": "jest",
     "test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
-    "predeploy": "yarn build && yarn next export",
-    "deploy": "gh-pages -b master -d out"
+    "predeploy": "yarn build && yarn next export && touch out/.nojekyll",
+    "deploy": "gh-pages -b master -d out --dotfiles"
   },
   "betterScripts": {
     "deploy-dev": {

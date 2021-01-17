@@ -7,6 +7,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const envConstants = require('./constants/getEnvConstants');
 
 const config = {
+  assetPrefix: '.',
+  poweredByHeader: false,
   generateBuildId: () => nextBuildId({ dir: __dirname }),
   pwa: {
     dest: 'public',
