@@ -1,0 +1,72 @@
+.styMainContainer {
+  position: relative;
+  padding: 0 36px;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.styMainInfo {
+  display: block;
+  margin: auto;
+  margin-left: 0;
+  width: 50%;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+    padding-top: 80px;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 0;
+    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+    text-decoration: none;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h3 {
+    font-weight: 800;
+    font-size: 64px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+
+    @media only screen and (max-width: 767px) {
+      font-size: 48px;
+    }
+  }
+
+  p {
+    line-height: 28px;
+    letter-spacing: 0.5px;
+  }
+}
+
+.styContactInfo {
+  padding-top: 0px;
+
+  @media only screen and (max-width: 767px) {
+    padding-bottom: 32px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 12px;
+
+      a {
+        > svg {
+          margin-right: 12px;
+        }
+
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+    }
+  }
+}
