@@ -31,6 +31,11 @@ export default function Home() {
           You can find me on:
           <ul>
             <li>
+              <a href="https://www.linkedin.com/in/josteph22/">
+                <Linkedin /> @josteph22
+              </a>
+            </li>
+            <li>
               <a href="https://github.com/josteph">
                 <GitHub /> @josteph
               </a>
@@ -38,11 +43,6 @@ export default function Home() {
             <li>
               <a href="https://twitter.com/jostephhh">
                 <Twitter /> @jostephhh
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/josteph22/">
-                <Linkedin /> @josteph22
               </a>
             </li>
           </ul>
