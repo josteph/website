@@ -16,11 +16,11 @@ const Header = () => {
               <a>Home</a>
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link href="/blog">
               <a>Blog</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </header>
