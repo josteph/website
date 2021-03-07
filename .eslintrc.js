@@ -1,34 +1,4 @@
-const jsConfig = require('./jsconfig.json');
-
-const modulePaths = jsConfig.compilerOptions.paths;
-
-module.exports = {
-  extends: ['react-app'],
-  parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 2015,
-    sourceType: 'module',
-    ecmaFeatures: {
-      generators: false,
-      jsx: true,
-      legacyDecorators: true,
-      objectLiteralDuplicateProperties: false,
-    },
-  },
-  env: {
-    amd: true,
-    browser: true,
-    commonjs: true,
-    es6: true,
-    node: true,
-    jest: true,
-  },
-  globals: {
-    expect: true,
-    __DEV__: true,
-    __PROD__: true,
-    __STAGING__: true,
-  },
+const reactJsConfig = {
   plugins: [
     'import',
     'jsx-a11y',
@@ -43,17 +13,6 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
-    },
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.json'],
-      },
-      alias: {
-        map: Object.keys(modulePaths).map(current => [
-          current.replace('/*', ''),
-          `./${modulePaths[current][0].replace('/*', '')}`,
-        ]),
-      },
     },
   },
   rules: {
@@ -102,7 +61,6 @@ module.exports = {
     'import/no-named-as-default-member': 'error',
     'import/no-named-default': 'error',
     'import/no-self-import': 'error',
-    'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
     'import/no-useless-path-segments': 'off',
     'import/no-webpack-loader-syntax': 'error',
     'import/order': ['error', { groups: [['builtin', 'external', 'internal']] }],
@@ -418,4 +376,119 @@ module.exports = {
     // On non-framework code, we will need to import from `@testing-library/dom`.
     'testing-library/no-dom-import': 'off',
   },
+};
+
+const tsRules = {
+  '@typescript-eslint/adjacent-overload-signatures': 'error',
+  '@typescript-eslint/ban-ts-ignore': 'off',
+  '@typescript-eslint/ban-types': 'error',
+
+  // Currently we have many code using non-camelcase, some of them are our code, some of them are third party (e.g. Branch.io).
+  '@typescript-eslint/camelcase': 'off',
+  camelcase: 'off',
+
+  '@typescript-eslint/consistent-type-assertions': 'error',
+  '@typescript-eslint/explicit-function-return-type': 'off',
+
+  '@typescript-eslint/no-array-constructor': 'error',
+  'no-array-constructor': 'off',
+
+  '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions'] }],
+  'no-empty-function': 'off',
+
+  '@typescript-eslint/no-empty-interface': 'error',
+
+  // While rare, there are situations where we need to use `any`. For example when the variable is really don't have structure (it can be anything).
+  '@typescript-eslint/no-explicit-any': 'off',
+
+  '@typescript-eslint/no-inferrable-types': 'error',
+  '@typescript-eslint/no-misused-new': 'error',
+  '@typescript-eslint/no-namespace': 'error',
+  '@typescript-eslint/no-non-null-assertion': 'warn',
+  '@typescript-eslint/no-this-alias': 'error',
+
+  '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
+  'no-unused-vars': 'off',
+
+  '@typescript-eslint/no-use-before-define': 'error',
+  'no-use-before-define': 'off',
+
+  // Currently we have many code using `const module = require('module')` pattern. Also benefit of activating this rule is not clear yet.
+  '@typescript-eslint/no-var-requires': 'off',
+
+  '@typescript-eslint/prefer-namespace-keyword': 'error',
+  '@typescript-eslint/triple-slash-reference': 'error',
+
+  // Handled by Typescript
+  'getter-return': 'off',
+  'no-const-assign': 'off',
+  'no-dupe-args': 'off',
+  'no-dupe-class-members': 'off',
+  'no-dupe-keys': 'off',
+  'no-new-symbol': 'off',
+  'no-redeclare': 'off',
+  'no-this-before-super': 'off',
+  'no-unreachable': 'off',
+  'valid-typeof': 'off',
+
+  // Handled by Prettier
+  '@typescript-eslint/brace-style': 'off',
+  '@typescript-eslint/func-call-spacing': 'off',
+  '@typescript-eslint/indent': 'off',
+  '@typescript-eslint/member-delimiter-style': 'off',
+  '@typescript-eslint/no-extra-parens': 'off',
+  '@typescript-eslint/quotes': 'off',
+  '@typescript-eslint/semi': 'off',
+  '@typescript-eslint/type-annotation-spacing': 'off',
+};
+
+module.exports = {
+  extends: ['react-app'],
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaVersion: 2015,
+    sourceType: 'module',
+    ecmaFeatures: {
+      generators: false,
+      jsx: true,
+      legacyDecorators: true,
+      objectLiteralDuplicateProperties: false,
+    },
+  },
+  env: {
+    amd: true,
+    browser: true,
+    commonjs: true,
+    es6: true,
+    node: true,
+    jest: true,
+  },
+  globals: {
+    expect: true,
+    __DEV__: true,
+    __PROD__: true,
+    __STAGING__: true,
+  },
+  plugins: reactJsConfig.plugins,
+  rules: reactJsConfig.rules,
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      plugins: [...reactJsConfig.plugins, '@typescript-eslint'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        jsx: true,
+        useJSXTextNode: true,
+      },
+      rules: {
+        ...reactJsConfig.rules,
+        ...tsRules,
+
+        // Already handled by Typescript typing system.
+        'react/prop-types': 'off',
+        'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+      },
+    },
+  ],
+  settings: reactJsConfig.settings,
 };

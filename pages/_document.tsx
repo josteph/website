@@ -1,11 +1,12 @@
 import React from 'react';
+import type { DocumentContext } from 'next/document';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 const APP_NAME = 'Joshua Stephen';
-const APP_DESCRIPTION = 'A web developer passionate about nodejs, react and graphql.';
+const APP_DESCRIPTION = 'A web developer passionate about javascript all around the web.';
 
 export default class extends Document {
-  static async getInitialProps(context) {
+  static async getInitialProps(context: DocumentContext) {
     const initialProps = await Document.getInitialProps(context);
     return { ...initialProps };
   }
@@ -23,10 +24,7 @@ export default class extends Document {
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#FFFFFF" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-        />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png" />
@@ -45,6 +43,8 @@ export default class extends Document {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@jostephhh" />
         <meta name="twitter:creator" content="@jostephhh" />
+        <meta name="twitter:image" content="/icons/apple-icon-180x180.png" />
+        <meta property="og:image" content="/icons/apple-icon-180x180.png" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="jostephhh" />
         <meta property="og:url" content="https://josteph.com" />

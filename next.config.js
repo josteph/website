@@ -7,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const envConstants = require('./constants/getEnvConstants');
 
 const config = {
-  assetPrefix: '.',
+  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://josteph.github.io' : '',
   poweredByHeader: false,
   generateBuildId: () => nextBuildId({ dir: __dirname }),
   pwa: {

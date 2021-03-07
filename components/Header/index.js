@@ -1,20 +1,15 @@
 import React from 'react';
-import Link from 'next/link';
 
 const Header = () => {
   return (
     <header className="navbar">
       <div className="nav-wrapper">
         <div className="nav-logo">
-          <Link href="/">
-            <a>Josteph</a>
-          </Link>
+          <a href="/">Josteph</a>
         </div>
         <ul className="nav-link">
           <li className="nav-item">
-            <Link href="/">
-              <a>Home</a>
-            </Link>
+            <a href="/">Home</a>
           </li>
           {/* <li className="nav-item">
             <Link href="/blog">
