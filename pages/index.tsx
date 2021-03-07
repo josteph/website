@@ -1,11 +1,11 @@
 import React from 'react';
 import { GitHub, Twitter, Linkedin } from 'react-feather';
-import { styMainContainer, styMainInfo, styContactInfo } from '@styles/home.page.module.scss';
+import styles from '@styles/home.page.module.scss';
 
 export default function Home() {
   return (
-    <main className={styMainContainer}>
-      <div className={styMainInfo}>
+    <main className={styles.styMainContainer}>
+      <div className={styles.styMainInfo}>
         <h1>Joshua Stephen</h1>
         <h3>
           Software Engineer
@@ -23,7 +23,7 @@ export default function Home() {
           Feel free to reach me anytime and have a nice chat together 🍻
         </p>
       </div>
-      <div className={`${styMainInfo} ${styContactInfo}`}>
+      <div className={`${styles.styMainInfo} ${styles.styContactInfo}`}>
         <h1>Get In Touch</h1>
         <p className="text-secondary">
           The universe is a pretty big place.
