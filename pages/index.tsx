@@ -17,10 +17,10 @@ export default function Home() {
           <br />
           I mainly deal with Javascript and stuffs related with web.
           <br />
-          Currently working at <a href="https://www.tokopedia.com">Tokopedia</a> in the web platform team.
+          Currently building great stuffs with the awesome team at <a href="https://www.tokopedia.com">Tokopedia</a>.
           <br />
           <br />
-          Feel free to reach me anytime and have a nice chat together 🍻
+          Feel free to reach me anytime to have a nice chat together 🍻
         </p>
       </div>
       <div className={`${styles.styMainInfo} ${styles.styContactInfo}`}>

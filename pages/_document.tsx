@@ -40,17 +40,17 @@ export default class extends Document {
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
         <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@jostephhh" />
         <meta name="twitter:creator" content="@jostephhh" />
-        <meta name="twitter:image" content="/icons/apple-icon-180x180.png" />
-        <meta property="og:image" content="/icons/apple-icon-180x180.png" />
+        <meta name="twitter:image" content="/icons/apple-icon-120x120.png" />
+        <meta property="og:image" content="/icons/apple-icon-120x120.png" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="jostephhh" />
-        <meta property="og:url" content="https://josteph.com" />
+        <meta property="og:url" content="https://josteph.github.io" />
         <meta property="og:title" content={APP_NAME} />
         <meta property="og:description" content={APP_DESCRIPTION} />
-        <link rel="canonical" href="https://josteph.com" />
+        <link rel="canonical" href="https://josteph.github.io" />
         <link rel="manifest" href="/manifest.json" />
         <Head />
         <body>
