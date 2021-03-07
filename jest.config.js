@@ -7,7 +7,7 @@ module.exports = {
   projects: [
     {
       displayName: 'Test Client',
-      testMatch: ['<rootDir>/**/__tests__/**/*.js'],
+      testMatch: ['<rootDir>/**/__tests__/**/*.test.(js|ts|tsx)'],
       testEnvironment: 'jsdom',
       moduleNameMapper: resolvers,
       transform: transformers,
