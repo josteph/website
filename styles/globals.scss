@@ -7,7 +7,7 @@
 
 @media (prefer-color-scheme: light) {
   :root {
-    --body-bg-color: #cef2ee;
+    --body-bg-color: #fcfcfc;
     --body-text-color: #1e1e24;
     --body-secondary-text-color: #616161;
     --primary-gradient: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
@@ -36,12 +36,7 @@ a {
   color: var(--body-secondary-text-color);
 }
 
-.navbar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: auto;
+.navbar { 
   z-index: 99998;
   display: block;
   overflow: visible;
@@ -99,7 +94,7 @@ a {
 .main-container {
   position: relative;
   padding: 0 36px;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-wrap: wrap;
 
@@ -109,7 +104,7 @@ a {
   }
 
   @media only screen and (max-width: 767px) {
-    padding: 80px 24px 0px;
+    padding: 0 24px;
   }
 }
 

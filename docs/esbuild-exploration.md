@@ -5,79 +5,126 @@ description: 'Thoughts regarding esbuild as the new replacement of bundle & webp
 
 # Using esbuild As Your New Bundler
 
-Published on March 2021.
+Published on March 8, 2021
 
 ---
 
-[**Prism**](https://prismjs.com/) is a popular syntax highlighter commonly used with Markdown.
-This example shows how to use Prism with [**Next.js**](https://nextjs.org/). Use the theme dropdown
-in the header to switch syntax highlighting themes.
+You might have heard about [esbuild](https://esbuild.github.io/) before even reaching this post. If you did, that's great! If you never heard about it before this, or at least you haven't tried it, **you should!**
 
-Next.js uses `getStaticPaths`/`getStaticProps` to generate [static pages](https://nextjs.org/docs/basic-features/data-fetching). These functions are _not_ bundled client-side, so you can **write server-side code directly**. For example, you can read Markdown files from the filesystem (`fs`) – including parsing front matter with [gray-matter](https://github.com/jonschlinkert/gray-matter). For example, let's assume you have a Markdown file located at `docs/my-post.js`.
+You can make esbuild to become either a bundler, or just simply use it as a compiler in replacement of babel.
 
-We can retrieve that file's contents using `getDocBySlug('my-post')`.
+## As Babel replacement, seriously?
+
+We all know about babel, how powerful babel is, and how babel has helped us building great stuffs all around the web. But in for large scale project, you might have experienced that the build time takes very long! This might become one of the biggest productivity blocker.
+
+Babel simply has more overhead cost than esbuild. Even if you cache the loader, esbuild is much much faster. Although, esbuild even put [restriction](https://esbuild.github.io/plugins/#plugin-api-limitations) for when writing plugin, so you might want to know this before really replacing your babel.
+
+Now let us talk about how replacing babel with esbuild. But before this, you should know that babel can simply take a folder as entry points, but in esbuild case you need to **specify** all the file paths that you are going to compile.
+
+I suggest you to start from using **Typescript** because esbuild supports typescript natively, without adding new plugin. Therefore, I can say that probably it doesn't have any performance impact when you are compiling typescript or normal javascript files, unlike Babel.
+
+If you are using typescript, you can get the list of needed files by using this method:
 
 ```js
-// lib/docs.js
+// getTSConfig.js
 
-import fs from 'fs';
-import { join } from 'path';
-import matter from 'gray-matter';
+const ts = require('typescript');
 
-export function getDocBySlug(slug) {
-  const realSlug = slug.replace(/\.md$/, '');
-  const docsDirectory = join(process.cwd(), 'docs');
-  const fullPath = join(docsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+function getTSConfig(configPath = 'tsconfig.json') {
+  const tsConfigFile = ts.findConfigFile(process.cwd(), ts.sys.fileExists, configPath);
 
-  return { slug: realSlug, meta: data, content };
+  if (!tsConfigFile) {
+    throw new Error(`tsconfig.json does not exist in the current directory: ${process.cwd()}`);
+  }
+
+  const configFile = ts.readConfigFile(tsConfigFile, ts.sys.readFile);
+
+  if (configFile.error) {
+    throw new Error(`Cannot read TS configuration file from ${process.cwd()}: ${configFile.error}`);
+  }
+
+  const tsConfig = ts.parseJsonConfigFileContent(configFile.config, ts.sys, process.cwd());
+
+  return { tsConfig, tsConfigFile };
+}
+
+module.exports = getTSConfig;
+```
+
+Now, let's pair it together with esbuild:
+
+```js
+const { startService } = require('esbuild');
+const getTSConfig = require('./getTSConfig');
+
+async function build() {
+  const { tsConfig, tsConfigFile } = getTSConfig();
+  const service = await startService();
+
+  const options = {
+    color: true,
+    entryPoints: tsConfig.fileNames,
+    outdir: OUT_DIR,
+    loader: {
+      '.js': 'jsx',
+    },
+    format: 'esm',
+    target: 'es2015',
+    minify: false,
+    tsconfig: tsConfigFile,
+    plugins: [], // optional
+  };
+
+  try {
+    await service.build(options);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    service.stop();
+  }
 }
 ```
 
-Then, we can **transform** the raw Markdown into HTML using [remark](https://github.com/remarkjs/remark) plugins.
+### What about compiling file assets?
+
+Using the configuration above, esbuild will skip to try compile every files with extension that typescript unable to read. That means, if you are importing images in your js/ts files, they won't be exported in the out directory.
+
+Fortunately, here is a piece of code you might want to consider adding **after the build process is finished**:
 
 ```js
-// lib/markdown.js
+async function build() {
+  ...
 
-import remark from 'remark';
-import html from 'remark-html';
-import prism from 'remark-prism';
+  try {
+    const cpy = require('cpy');
+    const relativeOutDir = path.relative(SRC_DIR, OUT_DIR);
 
-export default async function markdownToHtml(markdown) {
-  const result = await remark().use(html).use(prism).process(markdown);
-  return result.toString();
+    await cpy(['**', `!**/*.{js,ts,jx,tsx}`], relativeOutDir, {
+      cwd: SRC_DIR,
+      parents: true,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 ```
 
-Passing the `content` returned by `getDocBySlug('my-post')` into `markdownToHtml(content)`
-would convert a Markdown file like this:
+**And you're done!**
 
-````markdown
+If you are curious about the timing, try logging the time before each processes (build & copy).
+
+## Using together with existing bundler
+
+If you are using webpack, I suggest to look into [esbuild-loader](https://github.com/privatenumber/esbuild-loader).
+
+If you are using rollup, there is also existing [plugin](https://github.com/egoist/rollup-plugin-esbuild) to pair with esbuild. You can refer to the [full configuration](https://github.com/josteph/elastic-node-example/blob/main/rollup.config.js) I have tried before writing this post.
+
+There is not much to be explained, but simply follow the instructions given in their README.
+
+## Conclusion
+
+It is not easy to fully migrate from existing build tools, there are also many unexplained limitations of esbuild in this blog. Although, you may find several testimonies about the significant speed improvements [here](https://github.com/privatenumber/esbuild-loader/issues/13).
+
+If you are not convinced yet, just give it a try 😉
+
 ---
-title: 'My First Post'
-description: 'My very first blog post'
----
-
-# My First Post
-
-I **love** using [Next.js](https://nextjs.org/)
-
-```js
-const doc = getDocBySlug(params.slug);
-```
-````
-
-into this HTML, which includes the proper elements and class names.
-
-```html
-<h1>My First Post</h1>
-<p>I <strong>love</strong> using <a href="https://nextjs.org/">Next.js</a></p>
-<div class="remark-highlight">
-  <pre class="language-js">
-    <code>
-      <span class="token keyword">const</span> doc <span class="token operator">=</span> <span class="token function">getDocBySlug</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token property-access">slug</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    </code>
-  </pre>
-</div>
-```

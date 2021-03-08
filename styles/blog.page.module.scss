@@ -1,7 +1,7 @@
 .articleContainer {
-  max-width: 45rem;
+  max-width: 55%;
+  padding-bottom: 48px;
   margin: 0 auto;
-  padding-top: 80px;
   color: var(--body-secondary-text-color);
 
   h1 {
@@ -9,14 +9,26 @@
     margin-bottom: 16px;
   }
 
+  h2 {
+    margin-top: 2rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+  }
+
   p {
     font-size: 1rem;
     line-height: 1.5;
   }
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 920px) {
     max-width: 100%;
+  }
+
+  @media only screen and (max-width: 767px) {
     padding-top: 0;
+    padding-bottom: 24px;
 
     h1 {
       font-size: 1.875rem;

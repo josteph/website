@@ -1,11 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Header = () => {
   return (
     <header className="navbar">
       <div className="nav-wrapper">
         <div className="nav-logo">
-          <a href="/">Josteph</a>
+          <Link href="/">Josteph</Link>
         </div>
       </div>
     </header>
