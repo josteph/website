@@ -1,15 +1,16 @@
 .styMainInfo {
   margin-left: 0;
-  width: 50%;
+  width: 60%;
 
   @media only screen and (max-width: 767px) {
     width: 100%;
   }
 
   h3, h4 {
+    display: inline-block;
     font-weight: 800;
     font-size: 64px;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 0;
 
     @media only screen and (max-width: 767px) {
@@ -29,9 +30,14 @@
 
 .styContactInfo {
   padding-top: 0px;
+  width: 40%;
 
   @media only screen and (max-width: 767px) {
-    padding-bottom: 32px;
+    width: 100%;
+  }
+
+  h4 {
+    font-size: 32px;
   }
 
   ul {
@@ -51,5 +57,28 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+.styBlogInfo {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 48px;
+
+  > h2 {
+    margin: 3rem 0;
+    font-size: 32px;
+  }
+}
+
+.styBlogDisplay {
+  max-width: 50rem;
+
+  h3 {
+    font-size: 24px;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
   }
 }

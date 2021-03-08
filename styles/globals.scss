@@ -1,7 +1,7 @@
 :root {
   --body-bg-color: #1e1e24;
-  --body-text-color: #cef2ee;
-  --body-secondary-text-color: #e0e0e0;
+  --body-text-color: #e0e0e0;
+  --body-link-color: #3d99be;
   --primary-gradient: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
 }
 
@@ -9,7 +9,7 @@
   :root {
     --body-bg-color: #fcfcfc;
     --body-text-color: #1e1e24;
-    --body-secondary-text-color: #616161;
+    --body-link-color: #3d99be;
     --primary-gradient: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
   }
 }
@@ -25,15 +25,11 @@ body {
 }
 
 a {
-  color: var(--body-text-color);
+  color: var(--body-link-color);
 }
 
 * {
   box-sizing: border-box;
-}
-
-.text-secondary {
-  color: var(--body-secondary-text-color);
 }
 
 .navbar { 
@@ -94,7 +90,7 @@ a {
 .main-container {
   position: relative;
   padding: 0 36px;
-  min-height: 90vh;
+  min-height: 70vh;
   display: flex;
   flex-wrap: wrap;
 
@@ -117,9 +113,8 @@ a {
     position: absolute;
     height: 1px;
     width: 40%;
-    top: 1.5rem;
     left: 0;
-    bottom: 0;
+    bottom: -0.5rem;
     background-image: var(--primary-gradient);
     transition: width .3s;
   }
@@ -137,4 +132,8 @@ hr {
   height: 1px;
   border: none;
   margin: 1.5rem auto;
+}
+
+.font-sm {
+  font-size: 12px;
 }
