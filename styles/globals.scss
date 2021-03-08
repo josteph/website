@@ -112,6 +112,7 @@ a {
 }
 
 .ani-link {
+  position: relative;
   text-decoration: none;
 
   &::before {
