@@ -78,18 +78,14 @@ export default function BlogLayout({ meta, content }: { meta: any; content: stri
     <>
       <Head>
         <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:type" content="website" />
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@vercel" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <link rel="preload" href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css" as="script" />
-        <link href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css" rel="stylesheet" />
+        <link rel="preload" href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css" as="script" />
+        <link href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
       </Head>
 
