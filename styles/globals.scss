@@ -66,7 +66,6 @@ a {
 }
 
 .nav-logo {
-  font-size: 2rem;
   padding-left: 12px;
 }
 
@@ -84,5 +83,52 @@ a {
     transition: 0.25s;
     border-radius: 8px;
     margin-left: 12px;
+  }
+}
+
+.main-gradient {
+  background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
+  text-decoration: none;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-container {
+  position: relative;
+  padding: 0 36px;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+
+  > div {
+    display: block;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 767px) {
+    padding-top: 80px;
+  }
+}
+
+.ani-link {
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 40%;
+    top: 1.5rem;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
+    transition: width .3s;
+  }
+
+  &:hover {
+    &::before {
+      width: 100%;
+    }
   }
 }

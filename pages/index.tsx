@@ -4,16 +4,18 @@ import styles from '@styles/home.page.module.scss';
 
 export default function Home() {
   return (
-    <main className={styles.styMainContainer}>
+    <main className="main-container">
       <div className={styles.styMainInfo}>
-        <h1>Joshua Stephen</h1>
-        <h3>
+        <h1>
+          Hi, I am <span className="main-gradient">Joshua</span>
+        </h1>
+        <h3 className="main-gradient">
           Software Engineer
           <br />
           Web Platform
         </h3>
         <p className="text-secondary">
-          Hello, pleased to meet you!
+          Pleased to meet you!
           <br />
           I mainly deal with Javascript and stuffs related with web.
           <br />
@@ -24,7 +26,7 @@ export default function Home() {
         </p>
       </div>
       <div className={`${styles.styMainInfo} ${styles.styContactInfo}`}>
-        <h1>Get In Touch</h1>
+        <h2 className="main-gradient">Get In Touch</h2>
         <p className="text-secondary">
           The universe is a pretty big place.
           <br />
