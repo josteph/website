@@ -6,14 +6,15 @@ export default function Home() {
   return (
     <main className="main-container">
       <div className={styles.styMainInfo}>
-        <h1>
+        <h3>
           Hi, I am <span className="main-gradient">Joshua</span>
-        </h1>
-        <h3 className="main-gradient">
+        </h3>
+        <br />
+        <h4 className="main-gradient">
           Software Engineer
           <br />
           Web Platform
-        </h3>
+        </h4>
         <p className="text-secondary">
           Pleased to meet you!
           <br />
@@ -27,10 +28,12 @@ export default function Home() {
       </div>
       <div className={`${styles.styMainInfo} ${styles.styContactInfo}`}>
         <h2 className="main-gradient">Get In Touch</h2>
-        <p className="text-secondary">
-          The universe is a pretty big place.
-          <br />
-          You can find me on:
+        <div className="text-secondary">
+          <p>
+            The universe is a pretty big place.
+            <br />
+            You can find me on:
+          </p>
           <ul>
             <li>
               <a href="https://www.linkedin.com/in/josteph22/">
@@ -48,7 +51,7 @@ export default function Home() {
               </a>
             </li>
           </ul>
-        </p>
+        </div>
       </div>
     </main>
   );

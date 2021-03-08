@@ -1,14 +1,16 @@
 :root {
-  --body-bg-color: #121212;
+  --body-bg-color: #1e1e24;
   --body-text-color: #cef2ee;
   --body-secondary-text-color: #e0e0e0;
+  --primary-gradient: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
 }
 
 @media (prefer-color-scheme: light) {
   :root {
     --body-bg-color: #cef2ee;
-    --body-text-color: #121212;
+    --body-text-color: #1e1e24;
     --body-secondary-text-color: #616161;
+    --primary-gradient: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
   }
 }
 
@@ -16,15 +18,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-size: 20px;
   color: var(--body-text-color);
   background-color: var(--body-bg-color);
   transition: color 0.25s, background-color 0.25s;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-
-  @media only screen and (max-width: 767px) {
-    font-size: 16px;
-  }
 }
 
 a {
@@ -67,6 +64,11 @@ a {
 
 .nav-logo {
   padding-left: 12px;
+  margin-right: auto;
+
+  @media only screen and (max-width: 767px) {
+    padding-left: 0;
+  }
 }
 
 .nav-link {
@@ -87,7 +89,7 @@ a {
 }
 
 .main-gradient {
-  background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
+  background-image: var(--primary-gradient);
   text-decoration: none;
   -webkit-background-clip: text;
   background-clip: text;
@@ -97,7 +99,7 @@ a {
 .main-container {
   position: relative;
   padding: 0 36px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
 
@@ -107,7 +109,7 @@ a {
   }
 
   @media only screen and (max-width: 767px) {
-    padding-top: 80px;
+    padding: 80px 24px 0px;
   }
 }
 
@@ -123,7 +125,7 @@ a {
     top: 1.5rem;
     left: 0;
     bottom: 0;
-    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 30%, #8b56bf 100%);
+    background-image: var(--primary-gradient);
     transition: width .3s;
   }
 
@@ -132,4 +134,12 @@ a {
       width: 100%;
     }
   }
+}
+
+hr {
+  width: 80%;
+  background-image: var(--primary-gradient);
+  height: 1px;
+  border: none;
+  margin: 1.5rem auto;
 }

@@ -1,9 +1,13 @@
 ---
-title: 'Using esbuild as your new bundler'
+title: 'Using esbuild As Your New Bundler'
 description: 'Thoughts regarding esbuild as the new replacement of bundle & webpack for developing packages.'
 ---
 
-# Using esbuild as your new bundler
+# Using esbuild As Your New Bundler
+
+Published on March 2021.
+
+---
 
 [**Prism**](https://prismjs.com/) is a popular syntax highlighter commonly used with Markdown.
 This example shows how to use Prism with [**Next.js**](https://nextjs.org/). Use the theme dropdown

@@ -5,6 +5,12 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 const APP_NAME = 'Joshua Stephen';
 const APP_DESCRIPTION = 'A web developer passionate about javascript all around the web.';
 
+const websiteLd = {
+  '@context': 'http://schema.org',
+  '@type': 'WebSite',
+  url: 'https://josteph.github.io/',
+};
+
 export default class extends Document {
   static async getInitialProps(context: DocumentContext) {
     const initialProps = await Document.getInitialProps(context);
@@ -52,6 +58,7 @@ export default class extends Document {
         <meta property="og:description" content={APP_DESCRIPTION} />
         <link rel="canonical" href="https://josteph.github.io" />
         <link rel="manifest" href="/manifest.json" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
         <Head />
         <body>
           <Main />
