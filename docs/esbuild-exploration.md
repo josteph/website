@@ -69,9 +69,10 @@ async function build() {
     loader: {
       '.js': 'jsx', // if you are also compiling react files
     },
-    format: 'esm',
+    format: 'esm', // can be also 'cjs'
     target: 'es2015',
     minify: false,
+    bundle: false,
     tsconfig: tsConfigFile,
     plugins: [], // optional
   };
@@ -88,7 +89,7 @@ async function build() {
 
 ### What about compiling file assets?
 
-Using the configuration above, esbuild will skip to try compile every files with extension that typescript unable to read. That means, if you are importing images in your js/ts files, they won't be exported in the out directory.
+Using the configuration above, esbuild will skip to compile every files with extension that typescript unable to read. That means, if you are importing images in your js/ts files, they won't be exported in the out directory. This could lead to build time error.
 
 Fortunately, here is a piece of code you might want to consider adding **after the build process is finished**:
 
@@ -124,7 +125,7 @@ There is not much to be explained, but simply follow the instructions given in t
 
 ## Conclusion
 
-It is not easy to fully migrate from existing build tools, there are also many unexplained limitations of esbuild in this blog. Although, you may find several testimonies about the significant speed improvements [here](https://github.com/privatenumber/esbuild-loader/issues/13).
+It is not easy to fully migrate from existing build tools, there are also many unexplained limitations or edge cases of esbuild in this blog. Although, you may find several testimonies about the significant speed improvements [here](https://github.com/privatenumber/esbuild-loader/issues/13).
 
 If you are not convinced yet, just give it a try 😉
 

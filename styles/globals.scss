@@ -57,6 +57,10 @@ a {
   padding-left: 12px;
   margin-right: auto;
 
+  > a {
+    color: var(--body-text-color);
+  }
+
   @media only screen and (max-width: 767px) {
     padding-left: 0;
   }
@@ -136,4 +140,8 @@ hr {
 
 .font-sm {
   font-size: 12px;
+}
+
+.color-normal {
+  color: var(--body-text-color);
 }
