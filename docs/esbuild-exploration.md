@@ -14,7 +14,7 @@ You might have heard about [esbuild](https://esbuild.github.io/) before even rea
 
 You can make esbuild to become either a bundler, or just simply use it as a compiler in replacement of babel.
 
-## As Babel replacement, seriously?
+## Replacing Babel
 
 We all know about babel, how powerful babel is, and how babel has helped us building great stuffs all around the web. But in for large scale project, you might have experienced that the build time takes very long! This might become one of the biggest productivity blocker.
 
@@ -87,7 +87,7 @@ async function build() {
 }
 ```
 
-### What about compiling file assets?
+### Compiling other file assets
 
 Using the configuration above, esbuild will skip to compile every files with extension that typescript unable to read. That means, if you are importing images in your js/ts files, they won't be exported in the out directory. This could lead to build time error.
 
@@ -115,7 +115,7 @@ async function build() {
 
 If you are curious about the timing, try logging the time before & after each processes (build & copy).
 
-## Using together with existing bundler
+## Using with existing bundler
 
 If you are using webpack, I suggest you to have a look into [esbuild-loader](https://github.com/privatenumber/esbuild-loader).
 

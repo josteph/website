@@ -17,7 +17,7 @@ export async function getStaticProps() {
 export default function Home({ docs }: { docs: any[] }) {
   return (
     <main>
-      <div className="main-container">
+      <section className="main-container">
         <div className={styles.styMainInfo}>
           <h3>
             Hi, I am <span className="main-gradient">Joshua</span>
@@ -49,28 +49,28 @@ export default function Home({ docs }: { docs: any[] }) {
             </p>
             <ul>
               <li>
-                <a href="https://www.linkedin.com/in/josteph22/">
+                <a target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/josteph22/">
                   <Linkedin /> @josteph22
                 </a>
               </li>
               <li>
-                <a href="https://github.com/josteph">
+                <a target="_blank" rel="noreferrer noopener" href="https://github.com/josteph">
                   <GitHub /> @josteph
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/jostephhh">
+                <a target="_blank" rel="noreferrer noopener" href="https://twitter.com/jostephhh">
                   <Twitter /> @jostephhh
                 </a>
               </li>
             </ul>
           </div>
         </div>
-      </div>
+      </section>
 
       <hr />
 
-      <div className={styles.styBlogInfo}>
+      <section className={styles.styBlogInfo}>
         <h2>Blog</h2>
 
         {docs.map((doc) => (
@@ -84,7 +84,7 @@ export default function Home({ docs }: { docs: any[] }) {
             <p>{doc.meta.description}</p>
           </div>
         ))}
-      </div>
+      </section>
     </main>
   );
 }

@@ -47,14 +47,13 @@ a {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 24px;
     height: 100%;
     margin: auto;
+    width: 80%;
   }
 }
 
 .nav-logo {
-  padding-left: 12px;
   margin-right: auto;
 
   > a {
@@ -93,7 +92,8 @@ a {
 
 .main-container {
   position: relative;
-  padding: 0 36px;
+  width: 80%;
+  margin: auto;
   min-height: 70vh;
   display: flex;
   flex-wrap: wrap;
@@ -101,10 +101,6 @@ a {
   > div {
     display: block;
     margin: auto;
-  }
-
-  @media only screen and (max-width: 767px) {
-    padding: 0 24px;
   }
 }
 
