@@ -55,30 +55,27 @@ module.exports = getTSConfig;
 Now, let's pair it together with esbuild:
 
 ```js
-const { startService } = require('esbuild');
+const esbuild = require('esbuild');
 const getTSConfig = require('./getTSConfig');
 
 async function build() {
   const { tsConfig, tsConfigFile } = getTSConfig();
-  const service = await startService();
-
-  const options = {
-    color: true,
-    entryPoints: tsConfig.fileNames,
-    outdir: OUT_DIR,
-    loader: {
-      '.js': 'jsx', // if you are also compiling react files
-    },
-    format: 'esm', // can be also 'cjs'
-    target: 'es2015',
-    minify: false,
-    bundle: false,
-    tsconfig: tsConfigFile,
-    plugins: [], // optional
-  };
 
   try {
-    await service.build(options);
+    await esbuild.build({
+      color: true,
+      entryPoints: tsConfig.fileNames,
+      outdir: OUT_DIR,
+      loader: {
+        '.js': 'jsx', // if you are also compiling react files
+      },
+      format: 'esm', // can be also 'cjs'
+      target: 'es2015',
+      minify: false,
+      bundle: false,
+      tsconfig: tsConfigFile,
+      plugins: [], // optional
+    });
   } catch (error) {
     console.error(error);
   } finally {
@@ -86,6 +83,8 @@ async function build() {
   }
 }
 ```
+
+The example above only shown how to rely on typescript API to discover the files. In case you are not using typescript in your project, there is [a gist](https://gist.github.com/lovasoa/8691344#gistcomment-2927279) that lets you list all the files path in a folder recursively. But don't forget to filter only **.js** or **.jsx** files!
 
 ### Compiling other file assets
 
@@ -126,6 +125,8 @@ There is not much to be explained, but simply follow the instructions given in t
 ## Conclusion
 
 It is not easy to fully migrate from existing build tools, there are also many unexplained limitations or edge cases of esbuild in this blog. Although, you may find several testimonies about the significant speed improvements [here](https://github.com/privatenumber/esbuild-loader/issues/13).
+
+If you previously relied on babel to help optimize your app, this could be a challenge for migrating your existing app. For example you might have been using **babel-plugin-lodash** to help your lodash imports to be cherry-picked. Then you might need to recheck your app vendor's size. But here is the [esbuild plugin](https://github.com/josteph/esbuild-plugin-lodash) to help you get similar behaviour.
 
 If you are not convinced yet, just give it a try 😉
 
