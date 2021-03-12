@@ -62,7 +62,7 @@ export default function BlogLayout({ meta, content }: { meta: any; content: stri
         },
         publisher: {
           '@type': 'Organization',
-          url: 'https://josteph.github.io.com',
+          url: 'https://josteph.github.io',
           logo: 'icons/apple-icon.png',
           name: 'Joshua Stephen',
         },

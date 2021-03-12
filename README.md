@@ -1,8 +1,4 @@
-# DSS Next Template
-
-A customized Next.js boilerplate inspired from its original base structure.
-
-Please note that we are using `yarn` for our package manager.
+# Joshua Stephen Website
 
 ## Features
 
