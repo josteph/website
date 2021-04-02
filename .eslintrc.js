@@ -142,7 +142,12 @@ const reactJsConfig = {
     'jsx-a11y/scope': 'error',
     'jsx-a11y/tabindex-no-positive': 'error',
 
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
 
     'react/button-has-type': [
       'error',
