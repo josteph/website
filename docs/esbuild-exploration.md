@@ -12,9 +12,14 @@ Published on March 8, 2021
 
 ## Table of Contents
 
+## Introduction
+
 You might have heard about [esbuild](https://esbuild.github.io/) before even reading this post. If you did, that's great! But if you never heard about it before this, or at least you haven't tried it, then **you should!**
 
 You can make esbuild to become either a bundler, or just simply use it as a compiler in replacement of babel.
+
+?> ⚠️
+esbuild doesn't fully support **es5** syntax yet, you might want to reconsider about this before migrating from babel. You can read about it in the thread [here](https://github.com/evanw/esbuild/issues/297).
 
 ## Replacing Babel
 
@@ -80,8 +85,6 @@ async function build() {
     });
   } catch (error) {
     console.error(error);
-  } finally {
-    service.stop();
   }
 }
 ```

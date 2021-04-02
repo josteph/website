@@ -141,3 +141,14 @@ hr {
 .color-normal {
   color: var(--body-text-color);
 }
+
+.hint {
+  padding: 1rem;
+  white-space: pre-wrap;
+  border-radius: 8px;
+
+  &.warn {
+    color: #1e1e24;
+    background: #d8b343;
+  }
+}
