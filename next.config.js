@@ -14,6 +14,9 @@ const config = {
     dest: 'public',
   },
   publicRuntimeConfig: envConstants,
+  future: {
+    webpack5: true,
+  },
 };
 
 module.exports = withBundleAnalyzer(withPWA(config));
