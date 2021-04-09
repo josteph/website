@@ -1,10 +1,10 @@
 ---
-title: 'Exploring SWC as esbuild Alternative'
+title: 'Exploring SWC, a Rust Based Transpiler'
 description: 'Comparing with esbuild and list out current issues / edge cases for swc.'
 published: 'April 9, 2021'
 ---
 
-# Exploring SWC as esbuild Alternative
+# Exploring SWC, a Rust Based Transpiler
 
 Published on April 9, 2021
 
@@ -24,13 +24,15 @@ What I am going to discuss in this blog is about some edge cases you should know
 
 ## Older Browsers Support
 
-Discussing about older browsers, you might want to ship your code in **es5** format. Babel has [preset-env](https://babeljs.io/docs/en/babel-preset-env) which actually transpiles all es5+ syntax to be compatible with es5.
+Discussing about older browsers, you might want to ship your code in **ES5** format. Babel has [preset-env](https://babeljs.io/docs/en/babel-preset-env) which actually transpiles all ES5+ syntax to be compatible with ES5.
 
-As mentioned in the previous [blog](/blog/esbuild-exploration), esbuild currently does not support es5 syntax transformations. For safety, you can try esbuild for bundling server code instead.
+As mentioned in the previous [blog](/blog/esbuild-exploration), esbuild currently does not support ES5 syntax transformations. For safety, you can try esbuild for bundling server code instead or use it in development build like how [Vite](https://vitejs.dev/) does.
 
-On the other hand, SWC (what we are going to talk about it in this blog), does support ES5 syntax transformations. Personally I haven't found any weird issue with its es5 syntax transformations prior writing this blog, when trying it out in a large codebase. Set the target to `es5` and if you want, you can explore about [swc preset-env](https://swc.rs/docs/preset-env/).
+On the other hand, SWC (what we are going to talk about it in this blog), does support ES5 syntax transformations. Personally I didn't encounter any weird issue with its ES5 syntax transformations prior writing this blog, when trying it out in a large codebase. Set the target to `es5` and if you want, you can explore about [swc preset-env](https://swc.rs/docs/preset-env/).
 
 ## Discovered Issues
+
+Below are several issues I personally encountered, I personally hope in the future SWC would focus on API stabilization instead.
 
 ### Export default is not evaluated
 
@@ -169,7 +171,7 @@ var _default = get; // evaluate the function first
 exports.default = _default;
 ```
 
-### Current state of SWC
+### SWC Plugins
 
 So I've been writing a swc plugin for emotion that behaves similarly as [babel-emotion-plugin](https://github.com/emotion-js/emotion/tree/master/packages/babel-plugin).
 
@@ -216,8 +218,8 @@ Below are the edge cases that I stumbled upon writing a plugin in version `1.2.5
 
 Well, it is how it is. SWC is more alpha version of Babel, so please be extra careful when migrating specifically a large codebase from Babel.
 
-Despite encoutered the issues above, this trial was quite fun, I also have discovered about hidden webpack spec that I wasn't aware of ✌️.
+Despite having encoutered the issues above, this trial was quite fun, I also have discovered about hidden webpack spec that I wasn't aware of ✌️.
 
-Now let's wait for the exciting future: **esbuild fully supports es5** or **SWC is stabilized**.
+Now let's wait for the exciting future: **esbuild fully supports ES5 syntax transformations** or **SWC stabilization**.
 
 ---
