@@ -1,12 +1,12 @@
 ---
 title: 'Exploring SWC as esbuild Alternative'
 description: 'Comparing with esbuild and list out current issues / edge cases for swc.'
-published: 'April 10, 2021'
+published: 'April 9, 2021'
 ---
 
 # Exploring SWC as esbuild Alternative
 
-Published on April 10, 2021
+Published on April 9, 2021
 
 ---
 
@@ -14,19 +14,19 @@ Published on April 10, 2021
 
 ## Introduction
 
-In the last [blog](/blog/esbuild-exporation), we have talked about how to use esbuild programmatically in order to boost your build time performance. Not to forget about babel, a lot of transformations that we are not aware of using it in babel, might not be supported in either esbuild or swc.
+In the last [blog](/blog/esbuild-exploration), we have talked about how to use esbuild programmatically in order to boost your build time performance. Not to forget about babel, a lot of transformations that we are not aware of using it in babel, might not be supported in either esbuild or swc.
 
 Also a bit disclaimer about using these new build tools written in go / rust, they are **not fully stable yet**. Although they are actively being developed, try to be extra careful when you decide to use this on production!
 
 What I am going to discuss in this blog is about some edge cases you should know before even using swc.
 
-!> This blog was written when I used swc 1.2.51, as of this article's publish date.
+!> This blog was written when I used swc **1.2.51**, as of this article's publish date.
 
 ## Older Browsers Support
 
 Discussing about older browsers, you might want to ship your code in **es5** format. Babel has [preset-env](https://babeljs.io/docs/en/babel-preset-env) which actually transpiles all es5+ syntax to be compatible with es5.
 
-As mentioned in the previous [blog](/blog/esbuild-exporation), esbuild currently does not support es5 syntax transformations. For safety, you can try esbuild for bundling server code instead.
+As mentioned in the previous [blog](/blog/esbuild-exploration), esbuild currently does not support es5 syntax transformations. For safety, you can try esbuild for bundling server code instead.
 
 On the other hand, SWC (what we are going to talk about it in this blog), does support ES5 syntax transformations. Personally I haven't found any weird issue with its es5 syntax transformations prior writing this blog, when trying it out in a large codebase. Set the target to `es5` and if you want, you can explore about [swc preset-env](https://swc.rs/docs/preset-env/).
 
