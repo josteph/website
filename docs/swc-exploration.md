@@ -20,6 +20,8 @@ Also a bit disclaimer about using these new build tools written in go / rust, th
 
 What I am going to discuss in this blog is about some edge cases you should know before even using swc.
 
+!> This blog was written when I used swc 1.2.51, as of this article's publish date.
+
 ## Older Browsers Support
 
 Discussing about older browsers, you might want to ship your code in **es5** format. Babel has [preset-env](https://babeljs.io/docs/en/babel-preset-env) which actually transpiles all es5+ syntax to be compatible with es5.
@@ -194,7 +196,7 @@ Below are the edge cases that I stumbled upon writing a plugin in version `1.2.5
 2. Plugin does not work with `transformFile`, you need to use `transformFileSync` as alternative. Otherwise, it will give you weird `Unexpected token o in JSON` error. This is probably a mishandled logic problem in `@swc/core`, specifically in `parseFile` method (please do correct me if I am wrong here). It is actually doing `JSON.parse(<Promise>)` 👻
 
    ```js
-   const { transformFileSync } = require('@swc/core');
+   const { transformFileSync, plugins } = require('@swc/core');
 
    try {
      const result = transformFileSync(filename, {

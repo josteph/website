@@ -147,6 +147,11 @@ hr {
   white-space: pre-wrap;
   border-radius: 8px;
 
+  &.tip {
+    color: #1e1e24;
+    background: var(--body-link-color);
+  }
+
   &.warn {
     color: #1e1e24;
     background: #d8b343;
