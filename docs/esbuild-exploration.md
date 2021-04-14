@@ -19,7 +19,7 @@ You might have heard about [esbuild](https://esbuild.github.io/) before even rea
 You can make esbuild to become either a bundler, or just simply use it as a compiler in replacement of babel.
 
 ?> ⚠️
-esbuild doesn't fully support **es5** syntax yet, you might want to reconsider about this before migrating from babel. You can read about it in this [thread](https://github.com/evanw/esbuild/issues/297).
+esbuild doesn't fully support **es5** syntax yet, you might want to reconsider about shipping stuffs with esbuild to old browsers. You can read about it in this [thread](https://github.com/evanw/esbuild/issues/297).
 
 ## Replacing Babel
 

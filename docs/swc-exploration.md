@@ -18,13 +18,13 @@ In the last [blog](/blog/esbuild-exploration), we have talked about how to use e
 
 Also a bit disclaimer about using these new build tools written in go / rust, they are **not fully stable yet**. Although they are actively being developed, try to be extra careful when you decide to use this on production!
 
-What I am going to discuss in this blog is about some edge cases you should know before even using swc.
+What I'm going to discuss in this blog is about some edge cases you should know before even using swc.
 
-!> This blog was written when I used swc **1.2.51**, as of this article's publish date.
+!> This blog was written using swc version **1.2.51**, as of this article's publish date.
 
 ## Older Browsers Support
 
-Discussing about older browsers, you might want to ship your code in **ES5** format. Babel has [preset-env](https://babeljs.io/docs/en/babel-preset-env) which actually transpiles all ES5+ syntax to be compatible with ES5.
+Talking about older browsers, you might want to ship your code in **ES5** format. Babel has [preset-env](https://babeljs.io/docs/en/babel-preset-env) which actually transpiles all ES5+ syntax to be compatible with ES5.
 
 As mentioned in the previous [blog](/blog/esbuild-exploration), esbuild currently does not support ES5 syntax transformations. For safety, you can try esbuild for bundling server code instead or use it in development build like how [Vite](https://vitejs.dev/) does.
 
@@ -213,6 +213,10 @@ Below are the edge cases that I stumbled upon writing a plugin in version `1.2.5
    ```
 
 3. You might encounter error like `visitTsType method is not implemented`. I'm not sure about this, but it seems you can't use plugin together with a typescript file that specifies the typings.
+
+### Sourcemaps path
+
+This is seriously weird, since it uses node `path.relative` to determine the `sourceMappingURL`. But the path given is invalid, you can check this [issue](https://github.com/swc-project/cli/issues/21) I have opened in their CLI repository.
 
 ## Conclusion
 
