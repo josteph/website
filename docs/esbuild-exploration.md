@@ -127,6 +127,12 @@ If you are using rollup, there is also existing [plugin](https://github.com/egoi
 
 There is not much to be explained, but simply follow the instructions given in their README.
 
+## Future
+
+Esbuild future looks bright. The development is actually very active, there is always a new patch coming in every 1 or 2 working days.
+
+Esbuild has been adopted by [Vite.js](https://vitejs.dev/) in development mode only, and also [Remix](https://twitter.com/ryanflorence/status/1379498663446077440?s=20) as well.
+
 ## Conclusion
 
 It is not easy to fully migrate from existing build tools, there are also many unexplained limitations or edge cases of esbuild in this blog. Although, you may find several testimonies about the significant speed improvements [here](https://github.com/privatenumber/esbuild-loader/issues/13).

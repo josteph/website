@@ -37,7 +37,11 @@ Below are several issues I personally encountered, I personally hope in the futu
 ### Export default is not evaluated
 
 This is a quite interesting thing I just discovered during my years in Frontend development 😅.
-We have a file called `get.js`, let's take a look about the original code here:
+I have opened an issue regarding this [here](https://github.com/swc-project/swc/issues/1568).
+
+!> This issue was apparently fixed in v1.2.54, but you might want to consider reading about this hidden spec!
+
+Let's say we have a file called `get.js`:
 
 ```js
 export default function get(key) {
@@ -103,7 +107,7 @@ var _default = {
 exports.default = _default;
 ```
 
-If you try to console `_default` object, it will result in:
+If you try to console the `_default` object, it will output:
 
 ```js
 {
@@ -224,6 +228,10 @@ Well, it is how it is. SWC is more alpha version of Babel, so please be extra ca
 
 Despite having encoutered the issues above, this trial was quite fun, I also have discovered about hidden webpack spec that I wasn't aware of ✌️.
 
-Now let's wait for the exciting future: **esbuild fully supports ES5 syntax transformations** or **SWC stabilization**.
+## Future
+
+It seems Parcel is going to adopt SWC soon! You can view the [PR here](https://github.com/parcel-bundler/parcel/pull/6230), just in case it is merged or closed in the future.
+
+Let's wait for the exciting future: **esbuild fully supports ES5 syntax transformations** or **SWC stabilization**.
 
 ---
