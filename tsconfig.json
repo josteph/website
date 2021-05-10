@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@constants/*": ["constants/*"],
       "@context/*": ["context/*"],
       "@components/*": ["components/*"],
       "@helpers/*": ["helpers/*"],

@@ -1,15 +1,7 @@
 import React from 'react';
 import type { DocumentContext } from 'next/document';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
-const APP_NAME = 'Joshua Stephen';
-const APP_DESCRIPTION = 'A web developer passionate about javascript all around the web.';
-
-const websiteLd = {
-  '@context': 'http://schema.org',
-  '@type': 'WebSite',
-  url: 'https://josteph.github.io/',
-};
+import { APP_NAME } from '@constants/index';
 
 export default class extends Document {
   static async getInitialProps(context: DocumentContext) {
@@ -20,13 +12,12 @@ export default class extends Document {
   render() {
     return (
       <Html lang="en">
-        <title>{APP_NAME}</title>
+        <Head />
         <meta name="robots" content="index,follow" />
         <meta name="application-name" content={APP_NAME} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-        <meta name="description" content={APP_DESCRIPTION} />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#FFFFFF" />
@@ -51,15 +42,7 @@ export default class extends Document {
         <meta name="twitter:creator" content="@jostephhh" />
         <meta name="twitter:image" content="/icons/apple-icon-120x120.png" />
         <meta property="og:image" content="/icons/apple-icon-120x120.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="jostephhh" />
-        <meta property="og:url" content="https://josteph.github.io" />
-        <meta property="og:title" content={APP_NAME} />
-        <meta property="og:description" content={APP_DESCRIPTION} />
-        <link rel="canonical" href="https://josteph.github.io" />
         <link rel="manifest" href="/manifest.json" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
-        <Head />
         <body>
           <Main />
           <NextScript />

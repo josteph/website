@@ -12,6 +12,7 @@ export async function getStaticProps({ params }: any) {
     props: {
       ...doc,
       content,
+      slug: params.slug,
     },
   };
 }
@@ -31,7 +32,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function BlogLayout({ meta, content }: { meta: any; content: string }) {
+export default function BlogLayout({ meta, content, slug }: { meta: any; content: string; slug: string }) {
   const blogLd = {
     '@context': 'http://schema.org',
     '@graph': [
@@ -42,7 +43,7 @@ export default function BlogLayout({ meta, content }: { meta: any; content: stri
             '@type': 'ListItem',
             position: 1,
             item: {
-              '@id': `https://josteph.github.io/blog/${meta.slug}`,
+              '@id': `https://josteph.github.io/blog/${slug}`,
               name: meta.title,
             },
           },
@@ -51,7 +52,7 @@ export default function BlogLayout({ meta, content }: { meta: any; content: stri
       {
         '@context': 'http://schema.org',
         '@type': 'BlogPosting',
-        url: `https://josteph.github.io/blog/${meta.slug}`,
+        url: `https://josteph.github.io/blog/${slug}`,
         alternateName: 'Joshua Stephen',
         name: meta.title,
         headline: meta.title,
@@ -82,6 +83,8 @@ export default function BlogLayout({ meta, content }: { meta: any; content: stri
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
+        <meta property="og:url" content={`https://josteph.github.io/blog/${slug}`} />
+        <meta property="og:type" content="article" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:label1" content="Published on" />
