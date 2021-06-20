@@ -65,7 +65,6 @@ const reactJsConfig = {
     'import/no-webpack-loader-syntax': 'error',
     'import/order': ['error', { groups: [['builtin', 'external', 'internal']] }],
 
-    'jsx-a11y/accessible-emoji': 'error',
     'jsx-a11y/alt-text': [
       'error',
       {

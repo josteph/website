@@ -41,18 +41,27 @@ export default function Home({ docs }: { docs: any[] }) {
             <h3>
               Hi, I am <span className="main-gradient">Joshua</span>
             </h3>
-            <br />
-            <h4 className="main-gradient">
-              Software Engineer
-              <br />
-              Web Platform
-            </h4>
+            <h4 className="main-gradient">Software Engineer</h4>
             <p>
-              Pleased to meet you!
+              Pleased to meet you! 👋
               <br />
-              I mainly deal with Javascript and stuffs related with web.
+              I mainly deal with Javascript and stuff related with web development.
               <br />
-              Currently building great stuffs with the awesome team at <a href="https://www.tokopedia.com">Tokopedia</a>
+              Although currently I&apos;m more into{' '}
+              <a href="https://electronjs.org" target="_blank" rel="noopener noreferrer">
+                Electron
+              </a>
+              .
+              <br />
+              <br />I was a senior Web Platform Engineer at{' '}
+              <a href="https://www.tokopedia.com" target="_blank" rel="noopener noreferrer">
+                Tokopedia
+              </a>
+              <br />
+              But now working remotely at{' '}
+              <a href="https://tryprospect.com" target="_blank" rel="noopener noreferrer">
+                tryprospect.com
+              </a>
               .
               <br />
               <br />
@@ -60,10 +69,10 @@ export default function Home({ docs }: { docs: any[] }) {
             </p>
           </div>
           <div className={`${styles.styMainInfo} ${styles.styContactInfo}`}>
-            <h4 className="main-gradient">Get In Touch</h4>
+            <h4 className="main-gradient">Get In Touch !</h4>
             <div>
               <p>
-                The universe is a pretty big place.
+                The universe is really a big place.
                 <br />
                 You can find me on:
               </p>
