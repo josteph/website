@@ -41,6 +41,7 @@ export default function Home({ docs }: { docs: any[] }) {
             <h3>
               Hi, I am <span className="main-gradient">Joshua</span>
             </h3>
+            <br />
             <h4 className="main-gradient">Software Engineer</h4>
             <p>
               Pleased to meet you! 👋
@@ -78,17 +79,35 @@ export default function Home({ docs }: { docs: any[] }) {
               </p>
               <ul>
                 <li>
-                  <a target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/josteph22/">
+                  <a
+                    data-splitbee-event="Social Media Clicked"
+                    data-splitbee-event-type="linkedin"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    href="https://www.linkedin.com/in/josteph22/"
+                  >
                     <Linkedin /> @josteph22
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" rel="noreferrer noopener" href="https://github.com/josteph">
+                  <a
+                    data-splitbee-event="Social Media Clicked"
+                    data-splitbee-event-type="github"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    href="https://github.com/josteph"
+                  >
                     <GitHub /> @josteph
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" rel="noreferrer noopener" href="https://twitter.com/jostephhh">
+                  <a
+                    data-splitbee-event="Social Media Clicked"
+                    data-splitbee-event-type="twitter"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    href="https://twitter.com/jostephhh"
+                  >
                     <Twitter /> @jostephhh
                   </a>
                 </li>
