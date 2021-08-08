@@ -17,7 +17,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      docs,
+      docs: docs.sort((a, b) => b.meta.published_timestamp - a.meta.published_timestamp),
     },
   };
 }

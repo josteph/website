@@ -2,6 +2,7 @@
 title: 'Exploring SWC, a Rust Based Transpiler'
 description: 'Comparing with esbuild and list out current issues / edge cases for swc.'
 published: 'April 9, 2021'
+published_timestamp: '1617853212319'
 ---
 
 # Exploring SWC, a Rust Based Transpiler
