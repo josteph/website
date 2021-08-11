@@ -1,11 +1,14 @@
 const fs = require('fs');
-const paths = require('../tools/paths');
 const exec = require('./utils/verboseExec');
 
-const { TARGET_ENV = 'production' } = process.env;
+const { TARGET_ENV = 'production', NETLIFY } = process.env;
 
-if (!fs.existsSync(paths.dotenv)) {
-  exec(`cp ${paths.appEnvironment}/.env.${TARGET_ENV} .env`);
+if (!fs.existsSync('.env')) {
+  exec(`cp environment/.env.${TARGET_ENV} .env`);
 }
 
-exec(`next build`);
+exec('next build');
+
+if (NETLIFY) {
+  exec('next export');
+}
