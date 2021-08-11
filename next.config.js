@@ -6,8 +6,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const envConstants = require('./constants/getEnvConstants');
 
+const { NETLIFY, NODE_ENV } = process.env;
+
 const config = {
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://josteph.github.io' : '',
+  assetPrefix: NODE_ENV === 'production' && !NETLIFY ? 'https://josteph.github.io' : '',
   poweredByHeader: false,
   generateBuildId: () => nextBuildId({ dir: __dirname }),
   pwa: {
