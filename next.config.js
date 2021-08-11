@@ -4,8 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const envConstants = require('./constants/getEnvConstants');
-
 const { NETLIFY, NODE_ENV } = process.env;
 
 const config = {
@@ -15,7 +13,6 @@ const config = {
   pwa: {
     dest: 'public',
   },
-  publicRuntimeConfig: envConstants,
   future: {
     webpack5: true,
   },
