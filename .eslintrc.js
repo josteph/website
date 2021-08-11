@@ -1,15 +1,5 @@
 const reactJsConfig = {
-  plugins: [
-    'import',
-    'jsx-a11y',
-    'prettier',
-    'react',
-    'react-hooks',
-    'flowtype',
-    'jest',
-    'jest-dom',
-    'testing-library',
-  ],
+  plugins: ['import', 'prettier', 'flowtype', 'jest', 'jest-dom', 'testing-library'],
   settings: {
     react: {
       version: 'detect',
@@ -447,7 +437,7 @@ const tsRules = {
 };
 
 module.exports = {
-  extends: ['react-app', 'next', 'next/core-web-vitals'],
+  extends: ['next', 'next/core-web-vitals'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2015,
