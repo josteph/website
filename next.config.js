@@ -4,10 +4,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const { NETLIFY, NODE_ENV } = process.env;
+const { CI, NODE_ENV } = process.env;
 
 const config = {
-  assetPrefix: NODE_ENV === 'production' && !NETLIFY ? 'https://josteph.github.io' : '',
+  target: 'serverless',
+  assetPrefix: NODE_ENV === 'production' && !CI ? 'https://josteph.github.io' : '',
   poweredByHeader: false,
   generateBuildId: () => nextBuildId({ dir: __dirname }),
   pwa: {
