@@ -1,0 +1,17 @@
+# Production context:
+# All deploys from the main repository branch
+# will inherit these settings.
+[context.production]
+  [context.production.environment]
+    ENV = "production"
+    NEXT_PUBLIC_SPLITBEE_TOKEN = "ZST6GX261MTB"
+  # Deploys from main branch run this plugin in the build.
+  # Plugins context requires double brackets.
+  [[context.production.plugins]]
+    package = "@netlify/plugin-sitemap"
+
+# Deploy Preview context:
+# All deploys generated from a pull/merge request
+# will inherit these settings.
+[context.deploy-preview.environment]
+  ENV = "staging"
