@@ -124,7 +124,7 @@ export default function Home({ docs }: { docs: any[] }) {
           {docs.map((doc) => (
             <div className={styles.styBlogDisplay} key={doc.slug}>
               <h3>
-                <Link passHref href={`/blog/${doc.slug}`}>
+                <Link href={`/blog/${doc.slug}`}>
                   <a className="ani-link color-normal">{doc.meta.title}</a>
                 </Link>
               </h3>

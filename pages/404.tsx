@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function NotFoundPage() {
   return (
@@ -10,9 +11,9 @@ export default function NotFoundPage() {
           It seems this page went extinct 🤭
         </h1>
 
-        <a href="/" className="ani-link">
-          Let&lsquo;s go back!
-        </a>
+        <Link href="/">
+          <a className="ani-link">Let&lsquo;s go back!</a>
+        </Link>
       </div>
     </main>
   );

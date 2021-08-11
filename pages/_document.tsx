@@ -3,7 +3,7 @@ import type { DocumentContext } from 'next/document';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { APP_NAME } from '@constants/index';
 
-export default class extends Document {
+export default class SiteDocument extends Document {
   static async getInitialProps(context: DocumentContext) {
     const initialProps = await Document.getInitialProps(context);
     return { ...initialProps };

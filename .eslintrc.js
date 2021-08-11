@@ -447,7 +447,7 @@ const tsRules = {
 };
 
 module.exports = {
-  extends: ['react-app'],
+  extends: ['react-app', 'next', 'next/core-web-vitals'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2015,
