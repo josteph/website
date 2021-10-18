@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { Giscus } from '@giscus/react';
 import { getAllDocs, getDocBySlug } from '@lib/docs';
 import markdownToHtml from '@lib/markdown';
 import styles from '@styles/blog.page.module.scss';
@@ -96,6 +97,16 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
 
       <main className="main-container">
         <article className={styles.articleContainer} dangerouslySetInnerHTML={{ __html: content }} />
+        <Giscus
+          emitMetadata="0"
+          reactionsEnabled="1"
+          mapping="pathname"
+          repo="josteph/website"
+          repoId="MDEwOlJlcG9zaXRvcnkyMTQ2MjIzOTM"
+          category="General"
+          categoryId="DIC_kwDODMrguc4B_d1Q"
+          theme="preferred_color_scheme"
+        />
       </main>
     </>
   );
