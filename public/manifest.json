@@ -3,7 +3,7 @@
   "short_name": "Joshua Stephen",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#FFFFFF",
+  "theme_color": "#1e1e24",
   "background_color": "#FFFFFF",
   "start_url": "/",
   "icons": [

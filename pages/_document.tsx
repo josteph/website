@@ -20,7 +20,7 @@ export default class SiteDocument extends Document {
         <meta name="apple-mobile-web-app-title" content={APP_NAME} />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#FFFFFF" />
+        <meta name="theme-color" content="#1e1e24" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
