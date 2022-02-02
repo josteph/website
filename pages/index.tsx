@@ -42,7 +42,9 @@ export default function Home({ docs }: { docs: any[] }) {
               Hi, I am <span className="main-gradient">Joshua</span>
             </h3>
             <br />
-            <h4 className="main-gradient">Software Engineer</h4>
+            <h4>
+              a <span className="main-gradient">Software Engineer</span>
+            </h4>
             <p>
               Pleased to meet you! 👋
               <br />
@@ -51,8 +53,8 @@ export default function Home({ docs }: { docs: any[] }) {
               Although currently I&apos;m more into{' '}
               <a href="https://electronjs.org" target="_blank" rel="noopener noreferrer">
                 Electron
-              </a>
-              .
+              </a>{' '}
+              and Web3.0 (Blockchain) stuff.
               <br />
               <br />I was a senior Web Platform Engineer at{' '}
               <a href="https://www.tokopedia.com" target="_blank" rel="noopener noreferrer">
