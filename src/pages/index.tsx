@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { GitHub, Twitter, Linkedin } from 'react-feather';
-import { APP_NAME, APP_DESCRIPTION } from '@constants/index';
-import { getAllDocs } from '@lib/docs';
-import styles from '@styles/home.page.module.scss';
+import { APP_NAME, APP_DESCRIPTION } from '@/constants/index';
+import { getAllDocs } from '@/lib/docs';
+import styles from '@/styles/home.page.module.scss';
 
 const websiteLd = {
   '@context': 'http://schema.org',

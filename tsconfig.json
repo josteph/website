@@ -1,15 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@constants/*": ["constants/*"],
-      "@context/*": ["context/*"],
-      "@components/*": ["components/*"],
-      "@helpers/*": ["helpers/*"],
-      "@routes/*": ["pages/*"],
-      "@lib/*": ["lib/*"],
-      "@docs/*": ["docs/*"],
-      "@styles/*": ["styles/*"]
+      "@/*": ["./*"]
     },
     "allowJs": true,
     "allowUnreachableCode": false,
@@ -41,5 +34,5 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "exclude": ["**/node_modules/**"],
-  "include": ["@types", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "types", "**/*.ts", "**/*.tsx"]
 }

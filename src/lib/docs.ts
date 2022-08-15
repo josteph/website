@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-const docsDirectory = join(process.cwd(), 'docs');
+const docsDirectory = join(process.cwd(), 'src', 'docs');
 
 export function getDocBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');

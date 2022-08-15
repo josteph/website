@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import { Giscus } from '@giscus/react';
-import { getAllDocs, getDocBySlug } from '@lib/docs';
-import markdownToHtml from '@lib/markdown';
-import styles from '@styles/blog.page.module.scss';
+import { getAllDocs, getDocBySlug } from '@/lib/docs';
+import markdownToHtml from '@/lib/markdown';
+import styles from '@/styles/blog.page.module.scss';
 
 export async function getStaticProps({ params }: any) {
   const doc = getDocBySlug(params.slug);
