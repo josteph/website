@@ -27,6 +27,6 @@ jobs:
       - run: npm ci
 
       - name: Generate depcruise report
-        uses: josteph/depcruise-pull-request@v1
+        uses: josteph/depcruise-pull-request@v1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
