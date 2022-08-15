@@ -1,7 +1,7 @@
 import React from 'react';
 import type { DocumentContext } from 'next/document';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { APP_NAME } from '@constants/index';
+import { APP_NAME } from '@/constants/index';
 
 export default class SiteDocument extends Document {
   static async getInitialProps(context: DocumentContext) {

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "depcruise:graph": "depcruise --config .dependency-cruiser.js -T dot src -p cli-feedback | dot -T svg | depcruise-wrap-stream-in-html > depcruise-graph.html",
+    "depcruise:report:cli": "depcruise --config .dependency-cruiser.js src -p cli-feedback",
+    "depcruise:report:html": "depcruise --config .dependency-cruiser.js -T err-html -f depcruise-report.html src -p cli-feedback",
+    "depcruise:report:markdown": "depcruise --config .dependency-cruiser.js -T markdown -f depcruise-report.md src -p cli-feedback",
     "dev": "next dev",
     "build-dev": "bnr deploy-dev",
     "build-staging": "bnr deploy-staging",
@@ -73,6 +77,7 @@
     "@typescript-eslint/parser": "^4.15.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
+    "dependency-cruiser": "11.14.1",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
