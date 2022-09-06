@@ -202,6 +202,10 @@ code:not(.language-js) {
   max-width: 65%;
   margin-bottom: 1.5rem !important;
 
+  iframe {
+    min-height: 320px;
+  }
+
   @media only screen and (max-width: 920px) {
     max-width: 100%;
   }
