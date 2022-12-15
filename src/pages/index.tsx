@@ -54,7 +54,7 @@ export default function Home({ docs }: { docs: any[] }) {
               <a href="https://electronjs.org" target="_blank" rel="noopener noreferrer">
                 Electron
               </a>{' '}
-              and Web3.0 (Blockchain) stuff.
+              and Chrome Extension development.
               <br />
               <br />I was a senior Web Platform Engineer at{' '}
               <a href="https://www.tokopedia.com" target="_blank" rel="noopener noreferrer">
