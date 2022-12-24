@@ -1,5 +1,5 @@
 const reactJsConfig = {
-  plugins: ['import', 'prettier', 'flowtype', 'jest', 'jest-dom', 'testing-library'],
+  plugins: ['import', 'prettier', 'jest', 'jest-dom', 'testing-library'],
   settings: {
     react: {
       version: 'detect',
@@ -222,7 +222,6 @@ const reactJsConfig = {
     ],
     'react/prefer-es6-class': ['error', 'always'],
     'react/prop-types': 'error',
-    'react/react-in-jsx-scope': 'error',
     'react/require-default-props': [
       'error',
       {
@@ -438,7 +437,7 @@ const tsRules = {
 
 module.exports = {
   extends: ['next', 'next/core-web-vitals'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2015,
     sourceType: 'module',
@@ -448,6 +447,7 @@ module.exports = {
       legacyDecorators: true,
       objectLiteralDuplicateProperties: false,
     },
+    requireConfigFile: false,
   },
   env: {
     amd: true,

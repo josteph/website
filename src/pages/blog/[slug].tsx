@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head';
 import { Giscus } from '@giscus/react';
 import { getAllDocs, getDocBySlug } from '@/lib/docs';
