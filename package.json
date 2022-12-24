@@ -9,6 +9,8 @@
     "depcruise:report:markdown": "depcruise --config .dependency-cruiser.js -T markdown -f depcruise-report.md src -p cli-feedback",
     "dev": "next dev",
     "build": "next build",
+    "start": "next start -H 0.0.0.0",
+    "start:local": "next start",
     "analyze": "ANALYZE=true next build",
     "test": "jest",
     "test:coverage": "jest --coverage && open coverage/lcov-report/index.html"
