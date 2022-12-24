@@ -4,6 +4,7 @@ import { Giscus } from '@giscus/react';
 import { getAllDocs, getDocBySlug } from '@/lib/docs';
 import markdownToHtml from '@/lib/markdown';
 import styles from '@/styles/blog.page.module.scss';
+import Balancer from 'react-wrap-balancer';
 
 export async function getStaticProps({ params }: any) {
   const doc = getDocBySlug(params.slug);
@@ -96,7 +97,12 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
       </Head>
 
       <main className="main-container">
-        <article className={styles.articleContainer} dangerouslySetInnerHTML={{ __html: content }} />
+        <article className={styles.articleContainer}>
+          <h1>
+            <Balancer>{meta.title}</Balancer>
+          </h1>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </article>
         <Giscus
           emitMetadata="0"
           reactionsEnabled="1"
