@@ -9,12 +9,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+/** @type {import('next').NextConfig} */
 const config = {
   experimental: {
     appDir: false,
   },
-  poweredByHeader: false,
-
   // Recommended for the `pages` directory, default to `true` for files in `app`.
   reactStrictMode: false,
 };
