@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import Layout from '@/components/Layout';
 import Header from '@/components/Header';
