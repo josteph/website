@@ -9,7 +9,7 @@ import styles from '@/styles/home.page.module.scss';
 const websiteLd = {
   '@context': 'http://schema.org',
   '@type': 'WebSite',
-  url: 'https://josteph.github.io/',
+  url: 'https://joshuastephen.com/',
 };
 
 export async function getStaticProps() {
@@ -29,7 +29,7 @@ export default function Home({ docs }: { docs: any[] }) {
         <title>{APP_NAME}</title>
         <meta name="description" content={APP_DESCRIPTION} />
         <meta property="og:site_name" content="jostephhh" />
-        <meta property="og:url" content="https://josteph.github.io" />
+        <meta property="og:url" content="https://joshuastephen.com" />
         <meta property="og:title" content={APP_NAME} />
         <meta property="og:description" content={APP_DESCRIPTION} />
         <meta property="og:type" content="website" />
@@ -126,8 +126,8 @@ export default function Home({ docs }: { docs: any[] }) {
           {docs.map((doc) => (
             <div className={styles.styBlogDisplay} key={doc.slug}>
               <h3>
-                <Link href={`/blog/${doc.slug}`}>
-                  <a className="ani-link color-normal">{doc.meta.title}</a>
+                <Link href={`/blog/${doc.slug}`} className="ani-link color-normal">
+                  {doc.meta.title}
                 </Link>
               </h3>
               <p className="font-sm">{doc.meta.published}</p>

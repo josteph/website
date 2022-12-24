@@ -2,20 +2,24 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "allowJs": true,
     "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "declarationMap": false,
     "downlevelIteration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["es6", "es2015", "es2017", "dom"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
     "moduleResolution": "Node",
     "noImplicitAny": true,
@@ -31,8 +35,23 @@
     "skipLibCheck": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [
+      {
+        "name": "next"
+      },
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "incremental": true
   },
-  "exclude": ["**/node_modules/**"],
-  "include": ["next-env.d.ts", "types", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "**/node_modules/**"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "types",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

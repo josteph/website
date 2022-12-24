@@ -4,6 +4,7 @@ import { Giscus } from '@giscus/react';
 import { getAllDocs, getDocBySlug } from '@/lib/docs';
 import markdownToHtml from '@/lib/markdown';
 import styles from '@/styles/blog.page.module.scss';
+import Balancer from 'react-wrap-balancer';
 
 export async function getStaticProps({ params }: any) {
   const doc = getDocBySlug(params.slug);
@@ -44,7 +45,7 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
             '@type': 'ListItem',
             position: 1,
             item: {
-              '@id': `https://josteph.github.io/blog/${slug}`,
+              '@id': `https://joshuastephen.com/blog/${slug}`,
               name: meta.title,
             },
           },
@@ -53,7 +54,7 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
       {
         '@context': 'http://schema.org',
         '@type': 'BlogPosting',
-        url: `https://josteph.github.io/blog/${slug}`,
+        url: `https://joshuastephen.com/blog/${slug}`,
         alternateName: 'Joshua Stephen',
         name: meta.title,
         headline: meta.title,
@@ -64,13 +65,13 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
         },
         publisher: {
           '@type': 'Organization',
-          url: 'https://josteph.github.io',
+          url: 'https://joshuastephen.com',
           logo: 'icons/apple-icon.png',
           name: 'Joshua Stephen',
         },
         mainEntityOfPage: {
           '@type': 'WebSite',
-          '@id': 'https://josteph.github.io',
+          '@id': 'https://joshuastephen.com',
         },
       },
     ],
@@ -84,7 +85,7 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        <meta property="og:url" content={`https://josteph.github.io/blog/${slug}`} />
+        <meta property="og:url" content={`https://joshuastephen.com/blog/${slug}`} />
         <meta property="og:type" content="article" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
@@ -96,7 +97,12 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
       </Head>
 
       <main className="main-container">
-        <article className={styles.articleContainer} dangerouslySetInnerHTML={{ __html: content }} />
+        <article className={styles.articleContainer}>
+          <h1>
+            <Balancer>{meta.title}</Balancer>
+          </h1>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </article>
         <Giscus
           emitMetadata="0"
           reactionsEnabled="1"

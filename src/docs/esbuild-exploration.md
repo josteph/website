@@ -5,8 +5,6 @@ published: 'March 8, 2021'
 published_timestamp: '1615174812319'
 ---
 
-# Using esbuild As Your New Bundler
-
 Published on March 8, 2021
 
 ---

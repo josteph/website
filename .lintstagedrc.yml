@@ -1,0 +1,8 @@
+'*.{js,jsx}':
+  - prettier --write
+  - eslint --ignore-pattern '!.*.js' --ignore-pattern '!.*.jsx' --fix
+
+'*.{ts,tsx}':
+  - bash -c "tsc --noEmit --skipLibCheck"
+  - prettier --write
+  - eslint --ignore-pattern '!.*.ts' --ignore-pattern '!.*.tsx' --fix

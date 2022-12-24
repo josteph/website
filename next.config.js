@@ -1,18 +1,21 @@
-const nextBuildId = require('next-build-id');
-const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  runtimeCaching,
+  buildExcludes: [/middleware-manifest\.json$/],
+});
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+/** @type {import('next').NextConfig} */
 const config = {
-  poweredByHeader: false,
-  generateBuildId: () => nextBuildId({ dir: __dirname }),
-  pwa: {
-    dest: 'public',
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest\.json$/],
+  experimental: {
+    appDir: false,
   },
+  // Recommended for the `pages` directory, default to `true` for files in `app`.
+  reactStrictMode: false,
 };
 
 module.exports = withBundleAnalyzer(withPWA(config));

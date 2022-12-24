@@ -5,8 +5,6 @@ published: 'April 9, 2021'
 published_timestamp: '1617853212319'
 ---
 
-# Exploring SWC, a Rust Based Transpiler
-
 Published on April 9, 2021
 
 ---
