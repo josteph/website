@@ -144,6 +144,8 @@ What happened here? I honestly didn't know until I read about this [spec from we
    }
    ```
 
+3. Make sure your code **DOES NOT** have any **circular dependencies**!
+
 ---
 
 To conclude this issue, the safest code when exporting a function is:
