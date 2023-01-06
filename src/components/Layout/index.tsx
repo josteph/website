@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import type { ReactNode } from 'react';
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     let mql: MediaQueryList;
 
     const handler = (event: MediaQueryListEvent | MediaQueryList) => {
