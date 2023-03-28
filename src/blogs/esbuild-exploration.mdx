@@ -20,17 +20,19 @@ You can make esbuild to become either a bundler, or just simply use it as a comp
 ?> ⚠️
 esbuild doesn't fully support **es5** syntax yet, you might want to reconsider about shipping stuffs with esbuild to old browsers. You can read about it in this [thread](https://github.com/evanw/esbuild/issues/297).
 
-<CH.Scrollycoding>
-
 ## Replacing Babel
 
 We all know about babel, how powerful babel is, and how babel has helped us building great stuffs all around the web. But in for large scale project, you might have experienced that the build time takes very long! This might become one of the biggest productivity blocker.
 
 Babel simply has more overhead cost than esbuild. Even if you cache the loader, esbuild is much much faster. Although, esbuild even put [restriction](https://esbuild.github.io/plugins/#plugin-api-limitations) for when writing plugin, so you might want to know this before really replacing babel, especially if you depend on specific babel plugins that is not present in esbuild.
 
+<CH.Scrollycoding>
+
+### Obtaining list of files
+
 Let us talk about how to replace babel with esbuild. But before this, you should know that babel can simply take a folder as entry points, but in esbuild you need to **specify** all the file paths that you are going to compile as an array of paths.
 
-I suggest you to start from using **Typescript** because esbuild supports typescript natively, without adding new plugin. Therefore, I can say that probably it doesn't have any performance impact when you are compiling typescript or normal javascript files, unlike Babel.
+I suggest you to start from using **Typescript** because esbuild supports typescript natively, without adding new plugin. Therefore, it's safe to assume that it doesn't have any performance impact when you are compiling typescript or normal javascript files, unlike Babel.
 
 If you are using typescript, you can get the list of needed files through `tsConfig.fileNames`.
 
@@ -64,7 +66,7 @@ Now, let's pair it together with `esbuild`.
 
 The example here only shows how to rely on typescript API to discover the files. In case you are not using typescript in your project, there is [a gist](https://gist.github.com/lovasoa/8691344#gistcomment-2927279) that lets you list all the files path in a folder recursively. 
 
-But don't forget to filter only **.js** or **.jsx** files!
+But don't forget to only include **.js**, **.jsx**, **.ts**, or **.tsx** files!
 
 ```js build.js focus=1,7:19
 const esbuild = require('esbuild');
@@ -144,13 +146,13 @@ There is not much to be explained, but simply follow the instructions given in t
 
 Esbuild is very promising. The development is very active, there is always a new patch coming in every 1 or 2 working days.
 
-Esbuild has been adopted by [Vite.js](https://vitejs.dev/) in development mode only, and also [Remix](https://twitter.com/ryanflorence/status/1379498663446077440?s=20) as well.
+Esbuild has been adopted by [Vite.js](https://vitejs.dev/) in development mode only, and also by [Remix](https://twitter.com/ryanflorence/status/1379498663446077440?s=20) as well.
 
 ## Conclusion
 
 It is not easy to fully migrate from existing build tools, there are also many unexplained limitations or edge cases of esbuild in this blog. Although, you may find several testimonies about the significant speed improvements [here](https://github.com/privatenumber/esbuild-loader/issues/13).
 
-If you previously relied on babel to help optimize your app, this could be a challenge for migrating your existing app. For example you might have been using **babel-plugin-lodash** to help your lodash imports to be cherry-picked. Then you might need to recheck your app vendor's size. But here is the [esbuild plugin](https://github.com/josteph/esbuild-plugin-lodash) to help you get similar behaviour.
+If you previously relied on babel to help optimize your app, this could be a challenge for migrating your existing app. For example you might have been using **babel-plugin-lodash** to help transforming lodash imports in order to avoid bloated bundle sizes. Then you might need to recheck your app vendor's size. But here is the [esbuild plugin](https://github.com/josteph/esbuild-plugin-lodash) to help you get similar behaviour.
 
 If you are not convinced yet, just give it a try 😉
 
