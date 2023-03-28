@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import { initSplitbee } from '@/lib/splitbee';
 import initLogger from '@/lib/logger';
 
+import '@code-hike/mdx/dist/index.css';
 import '@/styles/globals.scss';
 
 import type { AppProps } from 'next/app';

@@ -1,39 +1,29 @@
 import Head from 'next/head';
 import { Giscus } from '@giscus/react';
-import { getAllDocs, getDocBySlug } from '@/lib/docs';
-import markdownToHtml from '@/lib/markdown';
 import styles from '@/styles/blog.page.module.scss';
 import Balancer from 'react-wrap-balancer';
-
-export async function getStaticProps({ params }: any) {
-  const doc = getDocBySlug(params.slug);
-  const content = await markdownToHtml(doc.content || '');
-
-  return {
-    props: {
-      ...doc,
-      content,
-      slug: params.slug,
-    },
-  };
-}
+import { allBlogs, Blog } from 'contentlayer/generated';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export async function getStaticPaths() {
-  const docs = getAllDocs();
-
+  const paths: string[] = allBlogs.map((blog) => blog.url);
   return {
-    paths: docs.map((doc) => {
-      return {
-        params: {
-          slug: doc.slug,
-        },
-      };
-    }),
+    paths,
     fallback: false,
   };
 }
 
-export default function BlogLayout({ meta, content, slug }: { meta: any; content: string; slug: string }) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug);
+
+  return {
+    props: {
+      blog,
+    },
+  };
+}
+
+export default function BlogLayout({ blog }: { blog: Blog }) {
   const blogLd = {
     '@context': 'http://schema.org',
     '@graph': [
@@ -44,8 +34,8 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
             '@type': 'ListItem',
             position: 1,
             item: {
-              '@id': `https://joshuastephen.com/blog/${slug}`,
-              name: meta.title,
+              '@id': `https://joshuastephen.com/${blog.url}`,
+              name: blog.title,
             },
           },
         ],
@@ -53,11 +43,11 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
       {
         '@context': 'http://schema.org',
         '@type': 'BlogPosting',
-        url: `https://joshuastephen.com/blog/${slug}`,
+        url: `https://joshuastephen.com/${blog.url}`,
         alternateName: 'Joshua Stephen',
-        name: meta.title,
-        headline: meta.title,
-        description: meta.description,
+        name: blog.title,
+        headline: blog.title,
+        description: blog.description,
         author: {
           '@type': 'Person',
           name: 'Joshua Stephen',
@@ -76,20 +66,22 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
     ],
   };
 
+  const MDXContent = useMDXComponent(blog.body.code);
+
   return (
     <>
       <Head>
-        <title>{meta.title}</title>
-        <meta content={meta.description} name="description" />
-        <meta property="og:site_name" content={meta.title} />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:url" content={`https://joshuastephen.com/blog/${slug}`} />
+        <title>{blog.title}</title>
+        <meta content={blog.description} name="description" />
+        <meta property="og:site_name" content={blog.title} />
+        <meta property="og:description" content={blog.description} />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:url" content={`https://joshuastephen.com/${blog.url}`} />
         <meta property="og:type" content="article" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:title" content={blog.title} />
+        <meta name="twitter:description" content={blog.description} />
         <meta name="twitter:label1" content="Published on" />
-        <meta name="twitter:data1" content={meta.published} />
+        <meta name="twitter:data1" content={blog.published} />
         <link rel="preload" href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css" as="script" />
         <link href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
@@ -98,9 +90,9 @@ export default function BlogLayout({ meta, content, slug }: { meta: any; content
       <main className="main-container">
         <article className={styles.articleContainer}>
           <h1>
-            <Balancer>{meta.title}</Balancer>
+            <Balancer>{blog.title}</Balancer>
           </h1>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <MDXContent />
         </article>
         <Giscus
           emitMetadata="0"

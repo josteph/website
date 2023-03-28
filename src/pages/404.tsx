@@ -10,8 +10,8 @@ export default function NotFoundPage() {
           It seems this page went extinct 🤭
         </h1>
 
-        <Link href="/">
-          <a className="ani-link">Let&lsquo;s go back!</a>
+        <Link href="/" className="ani-link">
+          Let&lsquo;s go back!
         </Link>
       </div>
     </main>

@@ -17,6 +17,7 @@ junit_report.xml
 /build
 /public/workbox*
 /public/sw.js*
+.contentlayer
 
 # misc
 .DS_Store

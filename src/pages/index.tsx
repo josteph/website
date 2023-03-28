@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { GitHub, Twitter, Linkedin } from 'react-feather';
 import { APP_NAME, APP_DESCRIPTION } from '@/constants/index';
-import { getAllDocs } from '@/lib/docs';
+import { allBlogs, Blog } from 'contentlayer/generated';
 import styles from '@/styles/home.page.module.scss';
 
 const websiteLd = {
@@ -12,16 +12,14 @@ const websiteLd = {
 };
 
 export async function getStaticProps() {
-  const docs = getAllDocs();
-
   return {
     props: {
-      docs: docs.sort((a, b) => b.meta.published_timestamp - a.meta.published_timestamp),
+      blogs: allBlogs.sort((a, b) => Number(b.published_timestamp) - Number(a.published_timestamp)),
     },
   };
 }
 
-export default function Home({ docs }: { docs: any[] }) {
+export default function Home({ blogs }: { blogs: Blog[] }) {
   return (
     <>
       <Head>
@@ -122,15 +120,15 @@ export default function Home({ docs }: { docs: any[] }) {
         <section className={styles.styBlogInfo}>
           <h2>Blog</h2>
 
-          {docs.map((doc) => (
-            <div className={styles.styBlogDisplay} key={doc.slug}>
+          {blogs.map((blog) => (
+            <div className={styles.styBlogDisplay} key={blog.url}>
               <h3>
-                <Link href={`/blog/${doc.slug}`} className="ani-link color-normal">
-                  {doc.meta.title}
+                <Link href={blog.url} className="ani-link color-normal">
+                  {blog.title}
                 </Link>
               </h3>
-              <p className="font-sm">{doc.meta.published}</p>
-              <p>{doc.meta.description}</p>
+              <p className="font-sm">{blog.published}</p>
+              <p>{blog.description}</p>
             </div>
           ))}
         </section>

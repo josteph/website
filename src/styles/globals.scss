@@ -203,7 +203,8 @@ code:not(.language-js) {
   margin-bottom: 1.5rem !important;
 
   iframe {
-    min-height: 320px;
+    border-radius: 4px;
+    min-height: 348px;
   }
 
   @media only screen and (max-width: 920px) {
