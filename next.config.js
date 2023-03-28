@@ -9,13 +9,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const { withContentlayer } = require('next-contentlayer');
+
 /** @type {import('next').NextConfig} */
 const config = {
   experimental: {
     appDir: false,
   },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   // Recommended for the `pages` directory, default to `true` for files in `app`.
   reactStrictMode: false,
 };
 
-module.exports = withBundleAnalyzer(withPWA(config));
+module.exports = withBundleAnalyzer(withContentlayer(withPWA(config)));

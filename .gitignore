@@ -8,6 +8,7 @@
 # testing
 /coverage
 junit_report.xml
+depcruise-report.html
 
 # next.js
 /.next/
@@ -17,6 +18,7 @@ junit_report.xml
 /build
 /public/workbox*
 /public/sw.js*
+.contentlayer
 
 # misc
 .DS_Store
