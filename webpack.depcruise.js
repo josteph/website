@@ -9,6 +9,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': path.resolve(__dirname),
+      'contentlayer/generated': '../.contentlayer/generated',
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },

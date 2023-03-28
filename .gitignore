@@ -8,6 +8,7 @@
 # testing
 /coverage
 junit_report.xml
+depcruise-report.html
 
 # next.js
 /.next/
