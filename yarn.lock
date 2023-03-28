@@ -2818,6 +2818,11 @@ acorn@^8.8.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.1.tgz#0a3f9cbecc4ec3bea6f0a80b66ae8dd2da250b73"
   integrity sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==
 
+actual-empty-object@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/actual-empty-object/-/actual-empty-object-1.0.0.tgz#9dcbb9e5039ba7746596b006bf49aada51142f6c"
+  integrity sha512-BCdAQCGjHqwvYXa6Ba9WsRLn5LZeZMM0RCSvTFvEK9Lh1I57xHJq/0phKOfKFpEZ0kRKFPKSfN7D4ifDkeagOA==
+
 agent-base@6:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"

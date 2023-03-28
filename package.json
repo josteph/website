@@ -50,6 +50,7 @@
     "@typescript-eslint/parser": "5.47.0",
     "@vitejs/plugin-react": "3.1.0",
     "@vitest/coverage-istanbul": "0.29.7",
+    "actual-empty-object": "1.0.0",
     "dependency-cruiser": "11.14.1",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.5",
