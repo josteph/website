@@ -3,9 +3,10 @@ import { remarkCodeHike } from '@code-hike/mdx';
 import { createRequire } from 'module';
 
 import remarkToc from 'remark-toc';
-import remarkAutolink from 'remark-autolink-headings';
+import remarkHeadings from 'remark-autolink-headings';
 import remarkHint from 'remark-hint';
 import remarkExternalLinks from 'remark-external-links';
+import remarkSlug from 'remark-slug';
 
 const require = createRequire(import.meta.url);
 const theme = require('shiki/themes/slack-dark.json');
@@ -51,10 +52,11 @@ export default makeSource({
   mdx: {
     remarkPlugins: [
       [remarkCodeHike, { theme }],
+      remarkSlug,
       remarkToc,
-      remarkAutolink,
+      remarkHint,
       [
-        remarkHint,
+        remarkHeadings,
         {
           behavior: 'append',
           content: {

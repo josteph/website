@@ -20,6 +20,8 @@ You can make esbuild to become either a bundler, or just simply use it as a comp
 ?> ⚠️
 esbuild doesn't fully support **es5** syntax yet, you might want to reconsider about shipping stuffs with esbuild to old browsers. You can read about it in this [thread](https://github.com/evanw/esbuild/issues/297).
 
+<CH.Scrollycoding>
+
 ## Replacing Babel
 
 We all know about babel, how powerful babel is, and how babel has helped us building great stuffs all around the web. But in for large scale project, you might have experienced that the build time takes very long! This might become one of the biggest productivity blocker.
@@ -30,11 +32,9 @@ Let us talk about how to replace babel with esbuild. But before this, you should
 
 I suggest you to start from using **Typescript** because esbuild supports typescript natively, without adding new plugin. Therefore, I can say that probably it doesn't have any performance impact when you are compiling typescript or normal javascript files, unlike Babel.
 
-If you are using typescript, you can get the list of needed files by using this method:
+If you are using typescript, you can get the list of needed files through `tsConfig.fileNames`.
 
-```js
-// getTSConfig.js
-
+```js getTSConfig.js
 const ts = require('typescript');
 
 function getTSConfig(configPath = 'tsconfig.json') {
@@ -54,69 +54,83 @@ function getTSConfig(configPath = 'tsconfig.json') {
 
   return { tsConfig, tsConfigFile };
 }
-
-module.exports = getTSConfig;
 ```
 
-Now, let's pair it together with esbuild:
+---
 
-```js
+### Adding `esbuild`
+
+Now, let's pair it together with `esbuild`.
+
+The example here only shows how to rely on typescript API to discover the files. In case you are not using typescript in your project, there is [a gist](https://gist.github.com/lovasoa/8691344#gistcomment-2927279) that lets you list all the files path in a folder recursively. 
+
+But don't forget to filter only **.js** or **.jsx** files!
+
+```js build.js focus=1,7:19
 const esbuild = require('esbuild');
 const getTSConfig = require('./getTSConfig');
 
 async function build() {
   const { tsConfig, tsConfigFile } = getTSConfig();
 
-  try {
-    await esbuild.build({
-      color: true,
-      entryPoints: tsConfig.fileNames,
-      outdir: OUT_DIR,
-      loader: {
-        '.js': 'jsx', // if you are also compiling react files
-      },
-      format: 'esm', // can be also 'cjs'
-      target: 'es2015',
-      minify: false,
-      bundle: false,
-      tsconfig: tsConfigFile,
-      plugins: [], // optional
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  await esbuild.build({
+    color: true,
+    entryPoints: tsConfig.fileNames,
+    outdir: OUT_DIR,
+    loader: {
+      '.js': 'jsx', // if you are also compiling react files
+    },
+    format: 'esm', // can be also 'cjs'
+    target: 'es2015',
+    minify: false,
+    bundle: false,
+    tsconfig: tsConfigFile,
+  });
 }
 ```
 
-The example above only shown how to rely on typescript API to discover the files. In case you are not using typescript in your project, there is [a gist](https://gist.github.com/lovasoa/8691344#gistcomment-2927279) that lets you list all the files path in a folder recursively. But don't forget to filter only **.js** or **.jsx** files!
+---
 
 ### Compiling other file assets
 
 Using the configuration above, esbuild will skip to compile every files with extension that typescript unable to read. That means, if you are importing images in your js/ts files, they won't be exported in the out directory. This could lead to build time error.
 
-Fortunately, here is a piece of code you might want to consider adding **after the build process is finished**:
+So here is a piece of code you might want to consider adding **after the build process is finished**.
 
-```js
+If you are curious about the timing, try logging the time before & after each processes (build & copy).
+
+```js build.js focus=1,22:27
+const cpy = require('cpy');
+const esbuild = require('esbuild');
+const getTSConfig = require('./getTSConfig');
+
 async function build() {
-  ...
+  const { tsConfig, tsConfigFile } = getTSConfig();
 
-  try {
-    const cpy = require('cpy');
-    const relativeOutDir = path.relative(SRC_DIR, OUT_DIR);
+  await esbuild.build({
+    color: true,
+    entryPoints: tsConfig.fileNames,
+    outdir: OUT_DIR,
+    loader: {
+      '.js': 'jsx', // if you are also compiling react files
+    },
+    format: 'esm', // can be also 'cjs'
+    target: 'es2015',
+    minify: false,
+    bundle: false,
+    tsconfig: tsConfigFile,
+  });
 
-    await cpy(['**', `!**/*.{js,ts,jx,tsx}`], relativeOutDir, {
-      cwd: SRC_DIR,
-      parents: true,
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  const relativeOutDir = path.relative(SRC_DIR, OUT_DIR);
+
+  await cpy(['**', `!**/*.{js,ts,jx,tsx}`], relativeOutDir, {
+    cwd: SRC_DIR,
+    parents: true,
+  });
 }
 ```
 
-**And you're done!**
-
-If you are curious about the timing, try logging the time before & after each processes (build & copy).
+</CH.Scrollycoding>
 
 ## Using with existing bundler
 
@@ -128,7 +142,7 @@ There is not much to be explained, but simply follow the instructions given in t
 
 ## Future
 
-Esbuild future looks bright. The development is actually very active, there is always a new patch coming in every 1 or 2 working days.
+Esbuild is very promising. The development is very active, there is always a new patch coming in every 1 or 2 working days.
 
 Esbuild has been adopted by [Vite.js](https://vitejs.dev/) in development mode only, and also [Remix](https://twitter.com/ryanflorence/status/1379498663446077440?s=20) as well.
 

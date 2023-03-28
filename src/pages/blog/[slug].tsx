@@ -82,8 +82,6 @@ export default function BlogLayout({ blog }: { blog: Blog }) {
         <meta name="twitter:description" content={blog.description} />
         <meta name="twitter:label1" content="Published on" />
         <meta name="twitter:data1" content={blog.published} />
-        <link rel="preload" href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css" as="script" />
-        <link href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
       </Head>
 

@@ -8,6 +8,9 @@
     #3d99be 30%,
     #8b56bf 100%
   );
+
+  --ch-scrollycoding-sticker-width: 40vw;
+  --ch-scrollycoding-code-min-height: 65vh;
 }
 
 @media(prefers-color-scheme: dark) {
@@ -194,12 +197,11 @@ hr {
 
 code:not(.language-js) {
   background-color: rgb(45, 45, 45);
-  font-size: 1.1rem;
   padding: 2px 4px;
 }
 
 .giscus {
-  max-width: 65%;
+  max-width: 80%;
   margin-bottom: 1.5rem !important;
 
   iframe {
@@ -214,4 +216,8 @@ code:not(.language-js) {
   @media only screen and (max-width: 767px) {
     margin-bottom: 1rem !important;
   }
+}
+
+.ch-scrollycoding-step-content[data-selected] {
+  border-color: var(--body-link-color);
 }
