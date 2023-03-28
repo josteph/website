@@ -34,7 +34,7 @@ export default function BlogLayout({ blog }: { blog: Blog }) {
             '@type': 'ListItem',
             position: 1,
             item: {
-              '@id': `https://joshuastephen.com/${blog.url}`,
+              '@id': `https://joshuastephen.com${blog.url}`,
               name: blog.title,
             },
           },
@@ -43,7 +43,7 @@ export default function BlogLayout({ blog }: { blog: Blog }) {
       {
         '@context': 'http://schema.org',
         '@type': 'BlogPosting',
-        url: `https://joshuastephen.com/${blog.url}`,
+        url: `https://joshuastephen.com${blog.url}`,
         alternateName: 'Joshua Stephen',
         name: blog.title,
         headline: blog.title,
@@ -76,7 +76,7 @@ export default function BlogLayout({ blog }: { blog: Blog }) {
         <meta property="og:site_name" content={blog.title} />
         <meta property="og:description" content={blog.description} />
         <meta property="og:title" content={blog.title} />
-        <meta property="og:url" content={`https://joshuastephen.com/${blog.url}`} />
+        <meta property="og:url" content={`https://joshuastephen.com${blog.url}`} />
         <meta property="og:type" content="article" />
         <meta name="twitter:title" content={blog.title} />
         <meta name="twitter:description" content={blog.description} />
