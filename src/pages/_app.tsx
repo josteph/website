@@ -1,6 +1,8 @@
+import { AnimatePresence } from 'framer-motion';
+
 import { useEffect } from 'react';
 
-import Layout from '@/components/Layout';
+import Theme from '@/components/Theme';
 import Header from '@/components/Header';
 import { initSplitbee } from '@/lib/splitbee';
 import initLogger from '@/lib/logger';
@@ -19,10 +21,13 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Layout>
+    <Theme>
       <Header />
-      <Component {...pageProps} />
-    </Layout>
+
+      <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
+        <Component {...pageProps} />
+      </AnimatePresence>
+    </Theme>
   );
 }
 

@@ -4,6 +4,7 @@ import { GitHub, Twitter, Linkedin } from 'react-feather';
 import { APP_NAME, APP_DESCRIPTION } from '@/constants/index';
 import { allBlogs, Blog } from 'contentlayer/generated';
 import styles from '@/styles/home.page.module.scss';
+import { Layout } from '@/components/Layout';
 
 const websiteLd = {
   '@context': 'http://schema.org',
@@ -32,7 +33,7 @@ export default function Home({ blogs }: { blogs: Blog[] }) {
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       </Head>
-      <main>
+      <Layout>
         <section className="main-container">
           <div className={styles.styMainInfo}>
             <h3>
@@ -132,7 +133,7 @@ export default function Home({ blogs }: { blogs: Blog[] }) {
             </div>
           ))}
         </section>
-      </main>
+      </Layout>
     </>
   );
 }

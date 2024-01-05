@@ -1,12 +1,11 @@
-import { useLayoutEffect } from 'react';
-import type { ReactNode } from 'react';
+import { useLayoutEffect, ReactNode } from 'react';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Theme = ({ children }: { children: ReactNode }) => {
   useLayoutEffect(() => {
     let mql: MediaQueryList;
 
     const handler = (event: MediaQueryListEvent | MediaQueryList) => {
-      document.documentElement.setAttribute('data-theme', event.matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-color-theme', event.matches ? 'dark' : 'light');
     };
 
     if (window.matchMedia) {
@@ -27,4 +26,4 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return <>{children}</>;
 };
 
-export default Layout;
+export default Theme;

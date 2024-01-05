@@ -1,9 +1,10 @@
 import Head from 'next/head';
-import { Giscus } from '@giscus/react';
+// import { Giscus } from '@giscus/react';
 import styles from '@/styles/blog.page.module.scss';
 import Balancer from 'react-wrap-balancer';
 import { allBlogs, Blog } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import { Layout } from '@/components/Layout';
 
 export async function getStaticPaths() {
   const paths: string[] = allBlogs.map((blog) => blog.url);
@@ -85,14 +86,14 @@ export default function BlogLayout({ blog }: { blog: Blog }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
       </Head>
 
-      <main className="main-container">
+      <Layout className="main-container">
         <article className={styles.articleContainer}>
           <h1>
             <Balancer>{blog.title}</Balancer>
           </h1>
           <MDXContent />
         </article>
-        <Giscus
+        {/* <Giscus
           emitMetadata="0"
           reactionsEnabled="1"
           mapping="pathname"
@@ -101,8 +102,8 @@ export default function BlogLayout({ blog }: { blog: Blog }) {
           category="General"
           categoryId="DIC_kwDODMrguc4B_d1Q"
           theme="preferred_color_scheme"
-        />
-      </main>
+        /> */}
+      </Layout>
     </>
   );
 }

@@ -1,8 +1,9 @@
+import { Layout } from '@/components/Layout';
 import Link from 'next/link';
 
 export default function NotFoundPage() {
   return (
-    <main className="main-container">
+    <Layout className="main-container">
       <div>
         <h1>
           <span className="main-gradient">Oh no!</span>
@@ -14,6 +15,6 @@ export default function NotFoundPage() {
           Let&lsquo;s go back!
         </Link>
       </div>
-    </main>
+    </Layout>
   );
 }
