@@ -34,7 +34,9 @@
       "@/*": [
         "./*"
       ],
-      "contentlayer/generated": ["../.contentlayer/generated"]
+      "contentlayer/generated": [
+        "../.contentlayer/generated"
+      ]
     },
     "plugins": [
       {
@@ -45,7 +47,10 @@
       }
     ],
     "incremental": false,
-    "types": ["node", "vitest/globals"]
+    "types": [
+      "node",
+      "vitest/globals"
+    ]
   },
   "exclude": [
     "**/node_modules/**"
@@ -55,6 +60,7 @@
     "types",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    ".next/types/**/*.ts"
   ]
 }
